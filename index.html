@@ -3,333 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiang Mai 2026 | 泰北清邁慢活之旅</title>
+    <title>CHIANG MAI 2026 | 泰北奢華慢旅</title>
     
-    <!-- 引入高品質字體與圖示 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- 外部資源：AOS 動畫、FontAwesome 圖示、Google Fonts -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,700&family=Noto+Sans+TC:wght@100;400;700&family=Montserrat:wght@200;400;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #5d6d4e; /* 清邁森林綠 */
-            --accent: #d4a373;  /* 泰北木質棕 */
-            --bg: #fdfaf5;
-            --text: #333;
+            --glass: rgba(255, 255, 255, 0.15);
+            --glass-heavy: rgba(0, 0, 0, 0.6);
+            --gold: #d4a373;
             --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
+            background: #000;
+            color: var(--white);
+            overflow-x: hidden;
         }
 
-        /* --- Navigation --- */
-        nav {
+        /* --- 側邊導覽點 --- */
+        .side-nav {
             position: fixed;
-            top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--primary); }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1598970605070-a38a6ccd3a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 4rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-        }
-
-        .hero p { font-size: 1.2rem; letter-spacing: 3px; opacity: 0.9; }
-
-        /* --- Container --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-
-        /* --- Flight Section --- */
-        .flight-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: -100px; /* 向上疊加效果 */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            position: relative;
-            z-index: 10;
         }
-
-        .flight-info h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .flight-detail { font-size: 0.95rem; color: #666; margin-bottom: 5px; }
-        .flight-detail b { color: var(--text); }
-
-        /* --- Day Section --- */
-        .day-section { padding: 80px 0; border-bottom: 1px solid #eee; }
-        .day-header { margin-bottom: 40px; }
-        .day-header h2 { 
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.5rem; 
-            color: var(--primary); 
-            display: flex; 
-            align-items: center; 
-            gap: 15px;
-        }
-        .day-header span { font-size: 1.1rem; color: var(--accent); font-weight: 400; }
-
-        /* --- Timeline Item --- */
-        .timeline-item {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--accent);
+        .side-nav a {
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--white);
+            border-radius: 50%;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .side-nav a:hover { background: var(--gold); border-color: var(--gold); }
+
+        /* --- 通用區塊樣式 --- */
+        section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 10%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 視差滾動效果 */
         }
 
-        .timeline-item:hover { transform: translateX(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-
-        .time-tag {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 2px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            z-index: 1;
         }
 
-        .item-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-        .item-desc { color: #666; font-size: 1rem; }
+        .content-box {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            padding: 50px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
 
-        .memo-box {
-            background: #fdf6ec;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
+        /* --- Typography --- */
+        .day-num {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 8rem;
+            position: absolute;
+            top: -60px;
+            left: -30px;
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 5rem; letter-spacing: 15px; text-transform: uppercase; }
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 30px; letter-spacing: 5px; color: var(--gold); }
+        .subtitle { letter-spacing: 8px; font-weight: 200; margin-bottom: 20px; }
+
+        /* --- 航班資訊卡 --- */
+        .flight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .flight-item {
+            border-left: 2px solid var(--gold);
+            padding-left: 20px;
+        }
+        .flight-item h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; }
+        .flight-item p { font-size: 1.1rem; font-weight: 400; margin-top: 5px; }
+
+        /* --- 行程內容清單 --- */
+        ul { list-style: none; }
+        li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 20px; }
+        li i { margin-top: 8px; color: var(--gold); font-size: 1.2rem; }
+        .item-text b { display: block; font-size: 1.3rem; margin-bottom: 5px; }
+        .item-text span { font-size: 1rem; opacity: 0.8; font-weight: 100; }
+
+        .memo {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 163, 115, 0.15);
+            border-left: 4px solid var(--gold);
             font-size: 0.9rem;
-            color: #8a6d3b;
-            border: 1px dashed var(--accent);
         }
 
-        /* --- Footer --- */
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
+        /* --- 各章節背景圖 (這部分可以替換成您喜歡的 URL) --- */
+        #hero { background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); }
+        #day1 { background-image: url('https://images.unsplash.com/photo-1598970605070-a38a6ccd3a2d?auto=format&fit=crop&w=1920&q=80'); }
+        #day2 { background-image: url('https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=1920&q=80'); }
+        #day3 { background-image: url('https://images.unsplash.com/photo-1590766948522-485d5397ec2a?auto=format&fit=crop&w=1920&q=80'); }
+        #day4 { background-image: url('https://images.unsplash.com/photo-1518548419970-58e3b4079ca2?auto=format&fit=crop&w=1920&q=80'); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .flight-card { grid-template-columns: 1fr; margin-top: -50px; }
-            nav { display: none; } /* 手機版導覽列可視情況改為漢堡選單 */
+            h1 { font-size: 2.5rem; letter-spacing: 5px; }
+            .day-num { font-size: 4rem; top: -30px; }
+            .content-box { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#day1">D1</a>
-    <a href="#day2">D2</a>
-    <a href="#day3">D3</a>
-    <a href="#day4">D4</a>
-    <a href="#day5">D5</a>
-    <a href="#day6">D6</a>
-    <a href="#day7">D7</a>
-</nav>
+    <div class="side-nav">
+        <a href="#hero"></a><a href="#day1"></a><a href="#day2"></a><a href="#day3"></a>
+        <a href="#day4"></a><a href="#day5"></a><a href="#day6"></a><a href="#day7"></a>
+    </div>
 
-<section class="hero">
-    <h1>清邁 · 慢活 2026</h1>
-    <p>CHIANG MAI ADVENTURE • AUG 02 - AUG 08</p>
-</section>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="overlay"></div>
+        <div class="content" data-aos="fade-up" data-aos-duration="1500">
+            <p class="subtitle" style="text-align: center;">SUMMER JOURNEY</p>
+            <h1>Chiang Mai</h1>
+            <p class="subtitle" style="text-align: center; margin-top: 20px;">2026.08.02 - 08.08</p>
+        </div>
+    </section>
 
-<div class="container">
+    <!-- Day 1: Flight -->
+    <section id="day1">
+        <div class="overlay"></div>
+        <div class="content-box" data-aos="fade-right">
+            <div class="day-num">01</div>
+            <p class="subtitle">AUG 02 Sunday</p>
+            <h2>啟程飛往泰北</h2>
+            <div class="flight-grid">
+                <div class="flight-item">
+                    <h4>HSR 646</h4>
+                    <p>左營 13:35 ➔ 桃園 15:09</p>
+                </div>
+                <div class="flight-item">
+                    <h4>AirAsia FD243</h4>
+                    <p>桃園 T1 18:55 ➔ 清邁 21:45</p>
+                </div>
+                <div class="flight-item" style="grid-column: 1 / -1;">
+                    <h4>Travel Note</h4>
+                    <p>PNR: NGW8XA | Luggage: 20KG</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2: City -->
+    <section id="day2">
+        <div class="overlay"></div>
+        <div class="content-box" data-aos="fade-left">
+            <div class="day-num">02</div>
+            <p class="subtitle">AUG 03 Monday</p>
+            <h2>古城漫步與白色市集</h2>
+            <ul>
+                <li><i class="fa-solid fa-landmark"></i><div class="item-text"><b>塔佩門與古城區</b><span>換錢（巫宗雄）➔ 瓦洛洛市集探索</span></div></li>
+                <li><i class="fa-solid fa-bag-shopping"></i><div class="item-text"><b>寧曼路 White Market</b><span>White Market & Think Park 文青之旅</span></div></li>
+                <li><i class="fa-solid fa-utensils"></i><div class="item-text"><b>晚餐：烤山曼尼</b><span>清邁必吃經典名店</span></div></li>
+            </ul>
+            <div class="memo">
+                <i class="fa-solid fa-info-circle"></i> 寧曼市集營業時間：週一、五、六、日 15:00 - 22:00
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3: Activity -->
+    <section id="day3">
+        <div class="overlay"></div>
+        <div class="content-box" data-aos="zoom-in">
+            <div class="day-num">03</div>
+            <p class="subtitle">AUG 04 Tuesday</p>
+            <h2>大象、藍廟與瀑布</h2>
+            <ul>
+                <li><i class="fa-solid fa-elephant"></i><div class="item-text"><b>Elephant Experience</b><span>Poo Poo Paper & CAFÉ Elephant</span></div></li>
+                <li><i class="fa-solid fa-synagogue"></i><div class="item-text"><b>清邁藍廟 & 黏黏瀑布</b><span>Wat Ban Den 壯麗建築與自然探險</span></div></li>
+                <li><i class="fa-solid fa-wine-glass-mirror"></i><div class="item-text"><b>晚餐：清邁村民偶涼吃牛排</b></div></li>
+            </ul>
+            <div class="memo">⏰ 行程預計時間：08:00 AM - 18:30</div>
+        </div>
+    </section>
+
+    <!-- 剩餘天數依此類推... -->
+    <!-- Day 4-7 的內容可以在此繼續添加相同的 Section 結構 -->
     
-    <!-- 航班看板 -->
-    <div class="flight-card">
-        <div class="flight-info">
-            <h3><i class="fas fa-plane-departure"></i> 出發航班</h3>
-            <div class="flight-detail">高鐵 646：<b>左營 13:35 ➔ 桃園 15:09</b></div>
-            <div class="flight-detail">亞航 FD243：<b>TPE 18:55 ➔ CNX 21:45</b></div>
-            <div class="flight-detail">航廈：<b>桃園 T1</b></div>
+    <section id="day4" style="background-image: url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80');">
+        <div class="overlay"></div>
+        <div class="content-box" data-aos="fade-up">
+            <div class="day-num">04-05</div>
+            <h2>慢活、烹飪與夜市</h2>
+            <ul>
+                <li><i class="fa-solid fa-shop"></i><div class="item-text"><b>AUG 05：尼曼探索</b><span>One Nimman & MAYA 百貨 / Khlong Mae Kha 運河</span></div></li>
+                <li><i class="fa-solid fa-fire-burner"></i><div class="item-text"><b>AUG 06：泰式廚房</b><span>09:00 廚房烹飪體驗 ➔ 長康路夜市巡禮</span></div></li>
+            </ul>
         </div>
-        <div class="flight-info">
-            <h3><i class="fas fa-suitcase"></i> 行程備註</h3>
-            <div class="flight-detail">訂位代碼：<b>NGW8XA</b></div>
-            <div class="flight-detail">託運行李：<b>20 公斤 / 人</b></div>
-            <div class="flight-detail">目的地：<b>泰國清邁 (CNX)</b></div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Day 1 -->
-    <div id="day1" class="day-section">
-        <div class="day-header">
-            <h2>Day 01 <span>2026 / 08 / 02 (週日)</span></h2>
+    <section id="day6" style="background-image: url('https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1920&q=80');">
+        <div class="overlay"></div>
+        <div class="content-box" data-aos="flip-up">
+            <div class="day-num">06-07</div>
+            <h2>最終篇章：歸途</h2>
+            <ul>
+                <li><i class="fa-solid fa-paw"></i><div class="item-text"><b>AUG 07：夜間動物園</b><span>15:30 Night Safari（回程接駁 20:00）</span></div></li>
+                <li><i class="fa-solid fa-leaf"></i><div class="item-text"><b>AUG 08：真心市集</b><span>09:00 真心市集巡禮（建議 08:00 抵達）</span></div></li>
+                <li><i class="fa-solid fa-plane-departure"></i><div class="item-text"><b>歸途航班 FD242</b><span>20:00 前往機場 ➔ 00:05 ➔ 04:55</span></div></li>
+            </ul>
         </div>
-        <div class="timeline-item">
-            <span class="time-tag">Afternoon</span>
-            <div class="item-title">開啟旅程：前往桃園機場</div>
-            <div class="item-desc">搭乘高鐵 646 班次，由左營出發至桃園。</div>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Evening</span>
-            <div class="item-title">飛往泰北玫瑰</div>
-            <div class="item-desc">搭乘亞洲航空抵達清邁，前往下榻飯店辦理入住。</div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Day 2 -->
-    <div id="day2" class="day-section">
-        <div class="day-header">
-            <h2>Day 02 <span>2026 / 08 / 03 (週一)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Morning</span>
-            <div class="item-title">古城區散策與換匯</div>
-            <div class="item-desc">塔佩門拍照 ➔ 巫宗雄換錢 ➔ 瓦洛洛市集體驗在地生活。</div>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Afternoon</span>
-            <div class="item-title">寧曼路潮流巡禮</div>
-            <div class="item-desc">逛白色市集 (White Market) 與 Think Park。</div>
-            <div class="memo-box">
-                💡 寧曼市集營業時間：週一、五、六、日 15:00 – 22:00
-            </div>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Dinner</span>
-            <div class="item-title">美食推薦：烤山曼尼</div>
-            <div class="item-desc">品嚐道地的清邁烤雞名店。</div>
-        </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div id="day3" class="day-section">
-        <div class="day-header">
-            <h2>Day 03 <span>2026 / 08 / 04 (週二)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">All Day Schedule</span>
-            <div class="item-title">自然與建築之美一日遊</div>
-            <div class="item-desc">Elephant Poo Poo Paper ➔ CAFÉ Elephant ➔ 清邁藍廟 (Wat Ban Den) ➔ 黏黏瀑布。</div>
-            <div class="memo-box">
-                ⏰ B 行程預估時間：08:00 AM - 18:30
-            </div>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Dinner</span>
-            <div class="item-title">清邁村民偶涼吃牛排</div>
-            <div class="item-desc">享受愜意的泰式西餐晚宴。</div>
-        </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div id="day4" class="day-section">
-        <div class="day-header">
-            <h2>Day 04 <span>2026 / 08 / 05 (週三)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <div class="item-title">尼曼區深度探索</div>
-            <div class="item-desc">One Nimman 尼曼一號 ➔ MAYA 百貨購物。</div>
-        </div>
-        <div class="timeline-item">
-            <div class="item-title">清邁小樽：Khlong Mae Kha 運河</div>
-            <div class="item-desc">傍晚漫步於日式風情的文青運河邊。</div>
-        </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div id="day5" class="day-section">
-        <div class="day-header">
-            <h2>Day 05 <span>2026 / 08 / 06 (週四)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">09:00 AM</span>
-            <div class="item-title">廚房烹飪體驗</div>
-            <div class="item-desc">親手製作泰式料理，感受香料的魅力。</div>
-        </div>
-        <div class="timeline-item">
-            <div class="item-title">長康路夜市 (Night Bazaar)</div>
-            <div class="item-desc">清邁最經典的夜市採買行程。</div>
-        </div>
-    </div>
-
-    <!-- Day 6 -->
-    <div id="day6" class="day-section">
-        <div class="day-header">
-            <h2>Day 06 <span>2026 / 08 / 07 (週五)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">15:30 PM</span>
-            <div class="item-title">清邁夜間動物園 (Night Safari)</div>
-            <div class="item-desc">在夜色中觀察野生動物，獨特的叢林體驗。</div>
-            <div class="memo-box">
-                🚌 回程接駁建議時間為 20:00
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 7 -->
-    <div id="day7" class="day-section">
-        <div class="day-header">
-            <h2>Day 07 <span>2026 / 08 / 08 (週六)</span></h2>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">09:00 AM</span>
-            <div class="item-title">真心市集 (Jing Jai Market)</div>
-            <div class="item-desc">清邁最有質感的文創有機市集。</div>
-            <div class="memo-box">
-                ✨ 建議早上 08:00 到 09:00 抵達最為精彩。
-            </div>
-        </div>
-        <div class="timeline-item">
-            <span class="time-tag">Midnight</span>
-            <div class="item-title">歸途：FD242 班機</div>
-            <div class="item-desc">喬家 ➔ 20:00 前往機場 ➔ 00:05 起飛返台。</div>
-        </div>
-    </div>
-
-</div>
-
-<footer>
-    <p>&copy; 2026 Chiang Mai Travel Plan. Enjoy your trip!</p>
-</footer>
-
+    <!-- AOS 初始化腳本 -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true
+        });
+    </script>
 </body>
 </html>

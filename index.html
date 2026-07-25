@@ -3,329 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiang Mai Trip 2026</title>
+    <title>Chiang Mai 2026 | Private Itinerary</title>
+    <!-- 引入高品質字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+TC:wght@300;400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <!-- 引入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Montserrat:wght@600&display=swap');
-
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --accent-color: #ff7675;
-            --bg-color: #f0f2f5;
-            --card-bg: #ffffff;
-            --text-main: #2d3436;
-            --text-sub: #636e72;
-            --flight-color: #0984e3;
-            --food-color: #e17055;
-            --location-color: #00b894;
+            --gold: #c5a059;
+            --dark: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.85);
+            --accent: #4a6741; /* 森林綠，符合清邁氛圍 */
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 50px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1584804772892-e4170ec47a94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* 清邁風格背景 */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
-        /* Hero Header */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Style --- */
         header {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 60px 20px;
             text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-            margin-bottom: 40px;
+            color: white;
+            margin-bottom: 60px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            letter-spacing: 4px;
             margin-bottom: 10px;
         }
 
-        header p {
-            font-weight: 300;
+        header .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
-        /* Timeline Container */
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+        /* --- Grid Layout --- */
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #dfe6e9;
-        }
-
-        /* Day Card */
-        .day-block {
-            position: relative;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .date-badge {
-            min-width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 2;
-            border: 2px solid #74b9ff;
-        }
-
-        .date-badge .month { font-size: 0.7rem; color: var(--text-sub); }
-        .date-badge .day { font-size: 1.2rem; font-weight: 700; color: #0984e3; }
-
+        /* --- Card Style --- */
         .card {
-            background: var(--card-bg);
-            margin-left: 30px;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            flex-grow: 1;
-            transition: transform 0.3s ease;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 0px; /* 方正俐落感 */
+            border-left: 5px solid var(--gold);
+            padding: 30px;
             position: relative;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .card::before {
-            content: '';
+            content: attr(data-day);
             position: absolute;
-            left: -10px;
-            top: 25px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            transform: rotate(45deg);
+            top: -10px;
+            right: 10px;
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(197, 160, 89, 0.1);
+            font-weight: 700;
+            z-index: 0;
         }
 
-        .weekday {
-            display: inline-block;
-            background: #f1f2f6;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            margin-bottom: 10px;
+        .date-info {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
         }
 
-        h3 {
-            font-size: 1.2rem;
+        .date-info h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .date-info .weekday {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Content Style --- */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .event {
             margin-bottom: 15px;
-            color: #2d3436;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .event i {
+            margin-top: 5px;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        .event-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .event-text b {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        /* --- Note/Special Info --- */
+        .memo {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: rgba(74, 103, 65, 0.1);
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--accent);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Content Styling */
-        .schedule-item {
-            margin-bottom: 12px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .badge {
+        /* --- Flight Tag --- */
+        .flight-tag {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 2px 10px;
             font-size: 0.75rem;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
 
-        .badge-flight { background: #e1f5fe; color: #0288d1; }
-        .badge-food { background: #fff3e0; color: #f57c00; }
-        .badge-time { background: #f3f0ff; color: #7048e8; }
-
-        .note-box {
-            margin-top: 15px;
-            padding: 12px;
-            background: #f8f9fa;
-            border-left: 4px solid #dfe6e9;
-            font-size: 0.9rem;
-            color: #636e72;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .highlight-text {
-            color: var(--location-color);
-            font-weight: 600;
-        }
-
-        @media (max-width: 600px) {
-            .timeline::before { left: 30px; }
-            .date-badge { min-width: 45px; height: 45px; }
-            .date-badge .day { font-size: 1rem; }
-            .card { margin-left: 15px; padding: 15px; }
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .itinerary-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>CHIANG MAI</h1>
-    <p>2026 Summer Adventure • 泰國清邁之旅</p>
-</header>
+<div class="container">
+    <header>
+        <p class="subtitle">Personal Journey</p>
+        <h1>CHIANG MAI</h1>
+        <p class="subtitle">AUG 02 — AUG 08, 2026</p>
+    </header>
 
-<div class="timeline">
-
-    <!-- Day 1 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">02</div>
+    <div class="itinerary-grid">
+        <!-- Day 1 -->
+        <div class="card" data-day="01">
+            <div class="date-info">
+                <h2>AUG 02</h2>
+                <div class="weekday">Sunday • Departure</div>
+            </div>
+            <div class="content">
+                <div class="flight-tag"><i class="fa-solid fa-train"></i> HSR 646</div>
+                <div class="event">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="event-text">左營 13:35 ➔ 桃園 15:09</div>
+                </div>
+                <div class="flight-tag"><i class="fa-solid fa-plane"></i> AirAsia FD243</div>
+                <div class="event">
+                    <i class="fa-solid fa-clock"></i>
+                    <div class="event-text">TPE 18:55 ➔ CNX 21:45 (T1)</div>
+                </div>
+                <div class="memo">Ref: NGW8XA | Luggage: 20KG</div>
+            </div>
         </div>
-        <div class="card">
-            <span class="weekday">星期日 - 出發日</span>
-            <h3>✈️ 啟程與飛行</h3>
-            <div class="schedule-item">
-                <span class="badge badge-flight">高鐵 646</span> 左營 13:35 ➔ 桃園 15:09
+
+        <!-- Day 2 -->
+        <div class="card" data-day="02">
+            <div class="date-info">
+                <h2>AUG 03</h2>
+                <div class="weekday">Monday • City Exploration</div>
             </div>
-            <div class="schedule-item">
-                <span class="badge badge-flight">亞航 FD243</span> TPE 18:55 ➔ CNX 21:45 (T1)
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-wallet"></i>
+                    <div class="event-text">塔佩門換錢 (<b>巫宗雄換錢</b>) ➔ 瓦洛洛市集</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <div class="event-text">寧曼路白色市集 (White Market) & Think Park</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-utensils"></i>
+                    <div class="event-text">Dinner: <b>烤山曼尼</b></div>
+                </div>
+                <div class="highlight-box">
+                    <i class="fa-solid fa-info-circle"></i> 寧曼市集 15:00-22:00 (週一、五、六、日)
+                </div>
             </div>
-            <div class="note-box">
-                📌 PNR: NGW8XA | 行李：20KG
+        </div>
+
+        <!-- Day 3 -->
+        <div class="card" data-day="03">
+            <div class="date-info">
+                <h2>AUG 04</h2>
+                <div class="weekday">Tuesday • Nature & Temples</div>
+            </div>
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-elephant"></i>
+                    <div class="event-text">Poo Poo Paper & CAFÉ Elephant</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-temple"></i>
+                    <div class="event-text">清邁藍廟 (Wat Ban Den) ➔ 黏黏瀑布</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-wine-glass"></i>
+                    <div class="event-text">Dinner: <b>清邁村民偶涼吃牛排</b></div>
+                </div>
+                <div class="memo">Schedule: 08:00 AM - 18:30</div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="card" data-day="04">
+            <div class="date-info">
+                <h2>AUG 05</h2>
+                <div class="weekday">Wednesday • Relaxing</div>
+            </div>
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-shop"></i>
+                    <div class="event-text">One Nimman - MAYA Shopping Day</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-water"></i>
+                    <div class="event-text">Khlong Mae Kha 運河散步</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="card" data-day="05">
+            <div class="date-info">
+                <h2>AUG 06</h2>
+                <div class="weekday">Thursday • Local Taste</div>
+            </div>
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <div class="event-text">09:00 <b>廚房烹飪課體驗</b></div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-moon"></i>
+                    <div class="event-text">長康路夜市 (Night Bazaar)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="card" data-day="06">
+            <div class="date-info">
+                <h2>AUG 07</h2>
+                <div class="weekday">Friday • Wild Life</div>
+            </div>
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-paw"></i>
+                    <div class="event-text">15:30 <b>夜間動物園 (Night Safari)</b></div>
+                </div>
+                <div class="highlight-box">
+                    <i class="fa-solid fa-bus"></i> 回程接駁建議時間為 20:00
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="card" data-day="07">
+            <div class="date-info">
+                <h2>AUG 08</h2>
+                <div class="weekday">Saturday • Homeward</div>
+            </div>
+            <div class="content">
+                <div class="event">
+                    <i class="fa-solid fa-leaf"></i>
+                    <div class="event-text">09:00 真心市集 (Jing Jai Market)</div>
+                </div>
+                <div class="event">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <div class="event-text">20:00 前往機場 ➔ FD242 00:05 起飛</div>
+                </div>
+                <div class="highlight-box">
+                    <i class="fa-solid fa-star"></i> 建議 08:00 - 09:00 抵達市集最熱鬧
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Day 2 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">03</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期一 - 古城與市集</span>
-            <h3>🏛️ 漫步古城區</h3>
-            <div class="schedule-item">🚶 塔佩門 ➔ 巫宗雄換錢 ➔ 瓦洛洛市集</div>
-            <div class="schedule-item">🛍️ 寧曼路白色市集 (White Market) & Think Park</div>
-            <div class="schedule-item">
-                <span class="badge badge-food">晚餐</span> <span class="highlight-text">烤山曼尼</span> (烤雞名店)
-            </div>
-            <div class="note-box">
-                💡 寧曼市集營業：15:00 - 22:00 (週一、五、六、日)
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">04</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期二 - 自然與寺廟</span>
-            <h3>🐘 大象與藍廟一日遊</h3>
-            <div class="schedule-item">🐘 Elephant Poo Poo Paper + CAFÉ Elephant</div>
-            <div class="schedule-item">⛩️ 清邁藍廟 (Wat Ban Den) ➔ 黏黏瀑布</div>
-            <div class="schedule-item">
-                <span class="badge badge-food">晚餐</span> <span class="highlight-text">清邁村民偶涼吃牛排</span>
-            </div>
-            <div class="note-box">
-                ⏰ 行程預計時間：08:00 AM - 18:30
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">05</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期三 - 慢活寧曼</span>
-            <h3>🛍️ 潮流與運河</h3>
-            <div class="schedule-item">🏬 One Nimman 尼曼一號 ➔ MAYA 百貨</div>
-            <div class="schedule-item">🛶 Khlong Mae Kha 運河 (清邁小樽)</div>
-        </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">06</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期四 - 廚藝體驗</span>
-            <h3>🍳 泰式生活體驗</h3>
-            <div class="schedule-item">
-                <span class="badge badge-time">09:00</span> <span class="highlight-text">泰式廚房烹飪課</span>
-            </div>
-            <div class="schedule-item">🌙 長康路夜市 (Night Bazaar)</div>
-        </div>
-    </div>
-
-    <!-- Day 6 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">07</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期五 - 探險之夜</span>
-            <h3>🐾 與動物共賞夜色</h3>
-            <div class="schedule-item">
-                <span class="badge badge-time">15:30</span> <span class="highlight-text">清邁夜間動物園 (Night Safari)</span>
-            </div>
-            <div class="note-box">
-                🚌 動物園回程接駁建議時間：20:00
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 7 -->
-    <div class="day-block">
-        <div class="date-badge">
-            <div class="month">AUG</div>
-            <div class="day">08</div>
-        </div>
-        <div class="card">
-            <span class="weekday">星期六 - 最終採買</span>
-            <h3>✨ 市集巡禮與歸途</h3>
-            <div class="schedule-item">
-                <span class="badge badge-time">09:00</span> <span class="highlight-text">真心市集 (Jing Jai Market)</span>
-            </div>
-            <div class="schedule-item">🏠 喬家 ➔ 20:00 前往機場</div>
-            <div class="schedule-item">
-                <span class="badge badge-flight">亞航 FD242</span> CNX 00:05 ➔ TPE 04:55
-            </div>
-            <div class="note-box">
-                📌 真心市集建議 08:00-09:00 抵達（最熱鬧）
-            </div>
-        </div>
-    </div>
-
 </div>
 
 </body>

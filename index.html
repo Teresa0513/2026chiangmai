@@ -3,206 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 清邁行程表</title>
+    <title>Dear, Chiang Mai - 2026 行程表</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f4f4f4; color: #333; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; color: #1e293b; }
         .serif-title { font-family: 'Playfair Display', serif; }
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?q=80&w=1200&auto=format&fit=crop');
-            background-size: cover; background-position: center;
+        
+        /* 標頭背景圖 (建議替換為你喜歡的清邁照片) */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1559139225-421502da1c45?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 320px;
         }
-        .sticky-date { position: sticky; top: 0; z-index: 10; }
+
+        .highlight-yellow { color: #facc15; font-style: italic; }
+        
+        .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .info-border { border-left: 4px solid #3b82f6; }
+        
+        /* 讓手機看更舒服 */
+        .max-w-custom { max-width: 500px; }
     </style>
 </head>
-<body class="pb-10">
+<body class="pb-12">
 
-    <!-- 標頭：保留你要的視覺風格 -->
-    <header class="hero-bg h-80 flex flex-col justify-center items-center text-white shadow-lg">
-        <p class="text-xs tracking-[0.4em] uppercase mb-2 opacity-80">The Soul of Northern Thailand</p>
-        <h1 class="serif-title text-6xl md:text-7xl italic">
-            Dear, <span class="text-yellow-400">Chiang Mai.</span>
+    <!-- 標頭 Section -->
+    <header class="hero-section flex flex-col justify-center items-center text-white text-center px-4">
+        <p class="text-[10px] tracking-[0.5em] uppercase mb-4 opacity-90">The Soul of Northern Thailand</p>
+        <h1 class="serif-title text-6xl md:text-7xl font-bold leading-tight">
+            Dear, <span class="highlight-yellow">Chiang Mai.</span>
         </h1>
-        <p class="mt-4 text-sm tracking-widest border-t pt-2 border-white border-opacity-30">2026.08.02 - 08.08</p>
+        <p class="mt-4 text-sm tracking-widest opacity-80 font-light">2026.08.02 - 08.08</p>
     </header>
 
-    <!-- 快捷交通資訊 -->
-    <section class="max-w-md mx-auto mt-6 px-4">
-        <div class="bg-white rounded-xl shadow-sm p-5 border-l-4 border-blue-500">
-            <h2 class="font-bold text-blue-600 mb-2">✈️ 航班 & 交通快訊</h2>
-            <div class="text-sm space-y-1 text-gray-700">
-                <p><strong>去程：</strong> 8/2 亞航 FD243 (18:55-21:45)</p>
-                <p><strong>回程：</strong> 8/9 亞航 FD242 (00:05-04:55)</p>
-                <p><strong>代號：</strong> <span class="bg-yellow-100 px-1 font-mono">NGW8XA</span> (行李 20kg)</p>
-            </div>
-        </div>
-    </section>
+    <main class="max-w-custom mx-auto mt-[-40px] px-4 space-y-6">
 
-    <!-- 每日行程開始 -->
-    <main class="max-w-md mx-auto mt-8 px-4 space-y-10">
-
-        <!-- Day 1 -->
-        <div class="relative">
-            <div class="sticky-date bg-gray-800 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                <span class="font-bold text-lg">08/02 (日) 第一天</span>
-                <span class="text-xs opacity-70">抵達清邁</span>
-            </div>
-            <div class="bg-white p-5 rounded-b-lg shadow-md space-y-4">
-                <div class="flex gap-4">
-                    <span class="text-gray-400 font-mono w-12">13:35</span>
-                    <p>高鐵 646 班次 (左營 ➔ 桃園 15:09)</p>
-                </div>
-                <div class="flex gap-4">
-                    <span class="text-blue-500 font-bold font-mono w-12">18:55</span>
-                    <p class="font-bold">桃園機場 T1 出發 (亞航)</p>
-                </div>
-                <div class="flex gap-4 border-t pt-3 mt-3">
-                    <span class="text-gray-400 font-mono w-12">21:45</span>
-                    <p>抵達清邁機場 (CNX) / 辦理入住</p>
-                </div>
+        <!-- 航班 & 交通快訊卡片 -->
+        <div class="bg-white rounded-2xl p-6 card-shadow info-border relative z-10">
+            <h2 class="text-blue-600 font-bold flex items-center mb-4">
+                <span class="mr-2">✈️</span> 航班 & 交通快訊
+            </h2>
+            <div class="space-y-2 text-sm text-gray-600">
+                <p><span class="font-bold text-gray-800">去程：</span> 8/2 亞航 FD243 (18:55-21:45)</p>
+                <p><span class="font-bold text-gray-800">回程：</span> 8/9 亞航 FD242 (00:05-04:55)</p>
+                <p><span class="font-bold text-gray-800">代號：</span> <span class="bg-yellow-100 px-1 font-mono text-gray-800">NGW8XA</span> <span class="ml-1 opacity-70">(行李 20kg)</span></p>
             </div>
         </div>
 
-        <!-- Day 2 -->
-        <div class="relative">
-            <div class="sticky-date bg-gray-800 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                <span class="font-bold text-lg">08/03 (一) 第二天</span>
-                <span class="text-xs opacity-70">古城與寧曼路</span>
+        <!-- 第一天行程 -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-[#1e293b] text-white px-5 py-3 flex justify-between items-center">
+                <h3 class="font-bold tracking-wider">08/02 (日) 第一天</h3>
+                <span class="text-[10px] opacity-70">抵達清邁</span>
             </div>
-            <div class="bg-white p-5 rounded-b-lg shadow-md space-y-5">
-                <div class="flex gap-4">
-                    <span class="text-red-500 font-bold font-mono w-12">重點</span>
-                    <div class="bg-red-50 p-2 rounded w-full">
-                        <p class="text-sm font-bold text-red-600">塔佩門換錢處 (巫宗雄)</p>
-                        <p class="text-xs text-gray-500">匯率較好，建議先來這裡</p>
+            <div class="p-6 space-y-5">
+                <div class="flex items-start">
+                    <span class="text-gray-400 font-mono text-sm w-16 mt-1">13:35</span>
+                    <p class="text-gray-700">高鐵 646 班次 (左營 ➔ 桃園 15:09)</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-blue-500 font-bold font-mono text-sm w-16 mt-1">18:55</span>
+                    <p class="font-bold text-gray-800">桃園機場 T1 出發 (亞航)</p>
+                </div>
+                <div class="flex items-start pt-2">
+                    <span class="text-gray-400 font-mono text-sm w-16 mt-1">21:45</span>
+                    <p class="text-gray-700">抵達清邁機場 (CNX) / 辦理入住</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二天行程 -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-[#1e293b] text-white px-5 py-3 flex justify-between items-center">
+                <h3 class="font-bold tracking-wider">08/03 (一) 第二天</h3>
+                <span class="text-[10px] opacity-70">古城與文青市集</span>
+            </div>
+            <div class="p-6 space-y-5">
+                <div class="flex items-start">
+                    <span class="text-red-500 font-bold text-xs w-16 mt-1 underline">重點</span>
+                    <div class="bg-red-50 p-3 rounded-lg flex-1">
+                        <p class="text-sm font-bold text-red-700">塔佩門換匯 (巫宗雄先生)</p>
+                        <p class="text-[11px] text-red-600 opacity-80 mt-1">※ 古城區匯率較好處，距離塔佩門步行6分</p>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <span class="text-gray-400 font-mono w-12">上午</span>
-                    <p>塔佩門 (步行6分) ➔ 瓦洛洛市集</p>
+                <div class="flex items-start">
+                    <span class="text-gray-400 font-mono text-sm w-16 mt-1">上午</span>
+                    <p class="text-gray-700">瓦洛洛市集 (傳統雜貨、伴手禮採買)</p>
                 </div>
-                <div class="flex gap-4">
-                    <span class="text-gray-400 font-mono w-12">15:00</span>
+                <div class="flex items-start">
+                    <span class="text-blue-500 font-bold font-mono text-sm w-16 mt-1">15:00</span>
                     <div>
-                        <p class="font-bold">寧曼路白色市集 (White Market)</p>
-                        <p class="text-xs text-gray-500">地點：Think Park / 營業至 22:00</p>
+                        <p class="font-bold text-gray-800">寧曼路白色市集 (White Market)</p>
+                        <p class="text-[11px] text-gray-400 mt-1">地點：Think Park / 營業至 22:00</p>
                     </div>
                 </div>
-                <div class="flex gap-4 border-t pt-3">
-                    <span class="text-orange-500 font-bold font-mono w-12">晚餐</span>
-                    <p>烤山曼尼 (Manee Roast Duck)</p>
+                <div class="flex items-start pt-2 border-t border-gray-50">
+                    <span class="text-orange-500 font-bold font-mono text-sm w-16 mt-1">晚餐</span>
+                    <p class="text-gray-800 font-semibold">烤山曼尼 (道地燒鴨)</p>
                 </div>
             </div>
         </div>
 
-        <!-- Day 3 -->
-        <div class="relative">
-            <div class="sticky-date bg-emerald-700 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                <span class="font-bold text-lg">08/04 (二) 第三天</span>
-                <span class="text-xs opacity-70">包車一日遊 (行程 B)</span>
+        <!-- 第三天行程 -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden border-l-4 border-emerald-500">
+            <div class="bg-emerald-800 text-white px-5 py-3 flex justify-between items-center">
+                <h3 class="font-bold tracking-wider">08/04 (二) 第三天</h3>
+                <span class="text-[10px] opacity-70 italic">包車行程 B</span>
             </div>
-            <div class="bg-white p-5 rounded-b-lg shadow-md space-y-4">
-                <div class="flex gap-4">
-                    <span class="text-emerald-600 font-bold font-mono w-12">08:00</span>
-                    <p class="font-bold underline decoration-emerald-300">行程開始 (18:30 結束)</p>
+            <div class="p-6 space-y-4">
+                <div class="flex items-center text-sm font-bold text-emerald-700 mb-2">
+                    🕒 08:00 AM - 18:30 PM
                 </div>
-                <div class="pl-16 space-y-2 text-sm text-gray-600">
-                    <p>• Elephant Poo Poo Paper (大象紙公園)</p>
-                    <p>• CAFÉ Elephant (大象咖啡)</p>
-                    <p>• 清邁藍廟 (Wat Ban Den)</p>
-                    <p>• 黏黏瀑布 (Bua Tong Waterfall)</p>
-                </div>
-                <div class="flex gap-4 border-t pt-3">
-                    <span class="text-orange-500 font-bold font-mono w-12">晚餐</span>
-                    <p>清邁村民偶涼吃牛排</p>
+                <ul class="ml-16 space-y-3 text-sm text-gray-700">
+                    <li class="flex items-center"><span class="w-2 h-2 bg-emerald-200 rounded-full mr-3"></span>Elephant Poo Poo Paper Park</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-emerald-200 rounded-full mr-3"></span>CAFÉ Elephant</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-emerald-200 rounded-full mr-3"></span>清邁藍廟 (Wat Ban Den)</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-emerald-200 rounded-full mr-3"></span>黏黏瀑布 (Bua Tong Waterfall)</li>
+                </ul>
+                <div class="ml-16 pt-4 border-t border-gray-50 italic text-gray-500 text-xs">
+                    晚餐：清邁村民偶涼吃牛排
                 </div>
             </div>
         </div>
 
-        <!-- Day 4 & 5 -->
-        <div class="grid grid-cols-1 gap-10">
-            <div class="relative">
-                <div class="sticky-date bg-gray-800 text-white py-2 px-4 rounded-t-lg">
-                    <span class="font-bold text-lg">08/05 (三) 第四天</span>
+        <!-- 第四至六天 (合併展示) -->
+        <div class="space-y-4">
+            <!-- Day 4 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">08/05 Wednesday</p>
+                    <p class="font-bold text-gray-800">寧曼區 (One Nimman) / 小京都運河</p>
                 </div>
-                <div class="bg-white p-5 rounded-b-lg shadow-md space-y-3">
-                    <p>📍 寧曼區逛街 (One Nimman / MAYA)</p>
-                    <p>📍 Khlong Mae Kha 運河 (小京都風情)</p>
-                </div>
+                <div class="text-gray-300">❯</div>
             </div>
-
-            <div class="relative">
-                <div class="sticky-date bg-gray-800 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                    <span class="font-bold text-lg">08/06 (四) 第五天</span>
+            <!-- Day 5 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">08/06 Thursday</p>
+                    <p class="font-bold text-gray-800">09:00 泰式烹飪課程 / 長康路夜市</p>
                 </div>
-                <div class="bg-white p-5 rounded-b-lg shadow-md space-y-4">
-                    <div class="flex gap-4">
-                        <span class="text-blue-500 font-bold font-mono w-12">09:00</span>
-                        <p class="font-bold">廚房烹飪課程 (泰菜體驗)</p>
-                    </div>
-                    <div class="flex gap-4 border-t pt-3">
-                        <span class="text-gray-400 font-mono w-12">晚上</span>
-                        <p>長康路夜市 (Night Bazaar)</p>
-                    </div>
-                </div>
+                <div class="text-gray-300">❯</div>
             </div>
-        </div>
-
-        <!-- Day 6 -->
-        <div class="relative">
-            <div class="sticky-date bg-indigo-900 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                <span class="font-bold text-lg">08/07 (五) 第六天</span>
-                <span class="text-xs opacity-70">夜間動物園</span>
-            </div>
-            <div class="bg-white p-5 rounded-b-lg shadow-md space-y-4">
-                <div class="flex gap-4">
-                    <span class="text-indigo-600 font-bold font-mono w-12">15:30</span>
-                    <p class="font-bold">夜間動物園 (Night Safari)</p>
+            <!-- Day 6 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">08/07 Friday</p>
+                    <p class="font-bold text-gray-800">15:30 夜間動物園 (Night Safari)</p>
                 </div>
-                <div class="flex gap-4 border-t pt-3 italic text-sm text-gray-500">
-                    <span class="font-mono w-12">20:00</span>
-                    <p>回程接送時間</p>
-                </div>
+                <span class="text-[10px] bg-indigo-50 text-indigo-500 px-2 py-1 rounded">20:00 返程</span>
             </div>
         </div>
 
-        <!-- Day 7 -->
-        <div class="relative">
-            <div class="sticky-date bg-orange-600 text-white py-2 px-4 rounded-t-lg flex justify-between items-center">
-                <span class="font-bold text-lg">08/08 (六) 第七天</span>
-                <span class="text-xs opacity-70">市集與返程</span>
+        <!-- 第七天行程 -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden border-t-4 border-orange-500">
+            <div class="bg-[#1e293b] text-white px-5 py-3 flex justify-between items-center">
+                <h3 class="font-bold tracking-wider">08/08 (六) 第七天</h3>
+                <span class="text-[10px] opacity-70 underline uppercase">Final Day</span>
             </div>
-            <div class="bg-white p-5 rounded-b-lg shadow-md space-y-4">
-                <div class="flex gap-4">
-                    <span class="text-red-500 font-bold font-mono w-12">08:00</span>
-                    <div class="w-full">
-                        <p class="font-bold">真心市集 (Jing Jai Market)</p>
-                        <p class="text-xs text-red-500 font-bold">★ 建議 8:00~9:00 抵達 (週六日限定)</p>
+            <div class="p-6 space-y-5">
+                <div class="flex items-start">
+                    <span class="text-orange-600 font-bold font-mono text-sm w-16 mt-1">08:00</span>
+                    <div>
+                        <p class="font-bold text-gray-800 underline decoration-orange-300 underline-offset-4">真心市集 (Jing Jai Market)</p>
+                        <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
+                            ※ 週六日限定 06:30 - 15:00<br>建議 8:00 到達，商品最齊全。
+                        </p>
                     </div>
                 </div>
-                <div class="flex gap-4 border-t pt-3">
-                    <span class="text-gray-400 font-mono w-12">12:00</span>
-                    <p>飯店退房 (行李寄放)</p>
+                <div class="flex items-start pt-2 border-t border-gray-50">
+                    <span class="text-gray-400 font-mono text-sm w-16 mt-1">12:00</span>
+                    <p class="text-gray-600">飯店退房 / 自由採買</p>
                 </div>
-                <div class="flex gap-4 border-t pt-3">
-                    <span class="text-orange-600 font-bold font-mono w-12">晚上</span>
-                    <p>喬家 2000 接送至機場</p>
+                <div class="flex items-start pt-2">
+                    <span class="text-gray-400 font-mono text-sm w-16 mt-1">晚上</span>
+                    <p class="text-gray-700 italic">喬家 2000 接送至機場 (CNX)</p>
                 </div>
-                <div class="flex gap-4 border-t pt-3 bg-gray-50 p-2 rounded">
-                    <span class="text-blue-600 font-bold font-mono w-12">00:05</span>
-                    <p class="font-bold text-blue-600">亞航 FD242 (8/9凌晨起飛)</p>
+                <div class="bg-blue-50 p-4 rounded-lg flex items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="text-blue-600 font-bold font-mono mr-4 text-sm">00:05</span>
+                        <p class="text-sm font-bold text-blue-800">8/9 起飛 (亞航 FD242)</p>
+                    </div>
+                    <span class="text-[10px] bg-blue-100 text-blue-600 px-2 py-1 rounded">T1 航廈</span>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- 底部操作列 (方便手機點擊) -->
-    <footer class="text-center mt-12 text-gray-400 text-xs">
-        <p>© 2026 Chiang Mai Memory</p>
-        <p class="mt-2">祝您 7 天自由行旅途愉快！</p>
+    <footer class="text-center mt-12 px-6">
+        <p class="text-[10px] text-gray-400 tracking-[0.4em] uppercase">Enjoy Your Journey</p>
+        <p class="text-xs text-gray-300 mt-2 italic font-light">© 2026 Chiang Mai Travel Planner</p>
     </footer>
 
 </body>

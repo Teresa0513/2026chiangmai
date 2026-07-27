@@ -7,76 +7,109 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
 
-        /* 基礎變數 */
         :root {
             --primary: #123334;
             --accent: #ffd36d;
             --bg: #f8f7f3;
-            --text: #333;
+            --text-main: #2d2d2d;
+            --text-light: #666;
         }
 
         * { box-sizing: border-box; }
-        body { margin: 0; background: var(--bg); font-family: 'Noto Sans TC', sans-serif; color: var(--text); line-height: 1.7; }
+        body { margin: 0; background: var(--bg); font-family: 'Noto Sans TC', sans-serif; color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; }
 
-        /* --- Header 區塊 --- */
+        /* --- Header --- */
         .hero {
-            min-height: 550px;
+            height: 85vh;
             color: #fff;
-            background: linear-gradient(90deg, rgba(18,51,52,0.85), rgba(18,51,52,0.3)), 
+            background: linear-gradient(rgba(18,51,52,0.7), rgba(18,51,52,0.3)), 
                         url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85') center/cover;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
-        .wrap { max-width: 1000px; margin: auto; padding: 0 25px; width: 100%; }
+        .wrap { max-width: 900px; margin: auto; padding: 0 30px; width: 100%; }
 
         nav {
-            height: 80px;
+            height: 90px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: .8rem;
-            letter-spacing: .12em;
+            letter-spacing: .2em;
+            font-weight: 500;
         }
 
-        .logo { font: 700 1.2rem 'Playfair Display'; }
+        .logo { font: 700 1.4rem 'Playfair Display'; }
 
-        .copy { padding-top: 80px; }
-        .eyebrow { color: var(--accent); font-size: .75rem; letter-spacing: .18em; font-weight: 700; margin-bottom: 10px; }
-        
-        .hero h1 { 
-            font: 500 clamp(3.5rem, 8vw, 7rem)/0.85 'Playfair Display'; 
-            letter-spacing: -.05em; 
-            margin: 15px 0; 
-        }
+        .copy { padding-bottom: 100px; }
+        .eyebrow { color: var(--accent); font-size: .8rem; letter-spacing: .3em; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        .hero h1 { font: 500 clamp(3.5rem, 10vw, 7.5rem)/0.85 'Playfair Display'; margin: 20px 0; }
         .hero i { color: var(--accent); font-style: normal; }
-        .hero p { max-width: 380px; font-size: 0.95rem; opacity: 0.9; }
+        .hero p { max-width: 400px; font-size: 1rem; opacity: 0.9; font-weight: 300; letter-spacing: 0.05em; }
 
-        /* --- 行程內容區塊 (取代 Iframe) --- */
-        .content-section { padding: 80px 0; }
+        /* --- 行程卡片區 --- */
+        .main-content { padding: 100px 0; }
         
         .day-card {
             background: #fff;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 50px;
+            margin-bottom: 80px;
+            border-radius: 2px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.03);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .day-card:hover { transform: translateY(-5px); }
+
+        .day-num { font-family: 'Playfair Display'; font-size: 3rem; color: #eee; position: absolute; top: 30px; right: 50px; line-height: 1; font-weight: 700; }
+        
+        .day-tag { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 2px 12px; margin-bottom: 15px; border-radius: 20px; }
+        
+        .day-title { font-size: 1.6rem; font-weight: 700; margin: 0 0 30px 0; color: var(--primary); position: relative; }
+        .day-title::after { content: ""; display: block; width: 40px; height: 3px; background: var(--accent); margin-top: 15px; }
+
+        /* 優化清單樣式 */
+        ul { list-style: none; padding: 0; margin-bottom: 30px; }
+        li { position: relative; padding-left: 25px; margin-bottom: 15px; font-size: 1.05rem; color: var(--text-main); }
+        li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+        /* 照片區塊 */
+        .photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #f0f0f0;
+            margin-top: 30px;
             border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--primary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 0.9rem;
+            background-size: cover;
+            background-position: center;
         }
 
-        .day-num { font-family: 'Playfair Display'; font-size: 2rem; color: var(--primary); margin-bottom: 10px; border-bottom: 1px solid #eee; display: inline-block; padding-bottom: 5px; }
-        .day-title { font-size: 1.4rem; font-weight: 700; margin: 10px 0 20px; color: #111; }
-        
-        ul { padding-left: 20px; }
-        li { margin-bottom: 12px; }
+        /* 貼士區塊 */
+        .tip-box {
+            background: #fdfaf0;
+            border: 1px dashed #e6d5b8;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #8a7b5d;
+            border-radius: 4px;
+        }
 
-        footer { text-align: center; padding: 60px 0; font-size: 0.8rem; opacity: 0.5; letter-spacing: 0.1em; }
+        footer { text-align: center; padding: 80px 0; border-top: 1px solid #eee; font-size: 0.8rem; color: #999; letter-spacing: 0.1em; }
 
-        /* 手機版調整 */
         @media(max-width:650px){
-            .hero { min-height: 450px; }
-            .copy { padding-top: 50px; }
-            .day-card { padding: 25px; }
+            .hero { height: 75vh; }
+            .day-card { padding: 35px 25px; }
+            .day-num { font-size: 2rem; top: 20px; right: 25px; }
+            .photo-placeholder { height: 220px; }
         }
     </style>
 </head>
@@ -86,56 +119,59 @@
     <div class="wrap">
         <nav>
             <span class="logo">CHIANG MAI / 2026</span>
-            <span>02 — 08 AUGUST</span>
+            <span>AUGUST 02 — 08</span>
         </nav>
-        <div class="copy">
-            <div class="eyebrow">A SEVEN DAY TRAVEL NOTE</div>
-            <h1>Dear,<br><i>Chiang Mai.</i></h1>
-            <p>從尼曼的晨光、古城的巷子，到夜市裡的香氣。這次，我們慢慢走。</p>
-        </div>
+    </div>
+    <div class="wrap copy">
+        <div class="eyebrow">A Seven Day Travel Note</div>
+        <h1>Dear,<br><i>Chiang Mai.</i></h1>
+        <p>從尼曼的晨光、古城的巷子，到夜市裡的香氣。這次，我們不趕行程，慢慢走。</p>
     </div>
 </header>
 
-<main class="content-section">
+<main class="main-content">
     <div class="wrap">
         
         <!-- Day 01 -->
-        <div class="day-card">
+        <article class="day-card">
             <div class="day-num">01</div>
-            <div class="day-title">抵達清邁：尼曼區的午後</div>
+            <span class="day-tag">ARRIVAL</span>
+            <h2 class="day-title">抵達清邁：尼曼區的午後</h2>
             <ul>
-                <li>搭乘飛機抵達清邁國際機場 (CNX)</li>
-                <li>尼曼區 (Nimman) 飯店 Check-in</li>
-                <li>One Nimman 廣場散步與晚餐</li>
-                <li>深夜按摩體驗</li>
+                <li>搭乘長榮航空抵達清邁國際機場 (CNX)</li>
+                <li>尼曼區精品旅館 Check-in</li>
+                <li>One Nimman 藝術街區與手作市集</li>
+                <li>晚餐：在地泰北咖哩麵 (Khao Soi)</li>
             </ul>
-        </div>
+            <!-- 如果有照片，把網址放在下方 style 的 url 裡 -->
+            <div class="photo-placeholder" style="background-image: url('https://images.unsplash.com/photo-1590332822765-72861e68022a?auto=format&fit=crop&w=800&q=80')">
+                <!-- 若沒有圖片則顯示文字 -->
+            </div>
+        </article>
 
         <!-- Day 02 -->
-        <div class="day-card">
+        <article class="day-card">
             <div class="day-num">02</div>
-            <div class="day-title">古城探索與寺廟洗禮</div>
+            <span class="day-tag">OLD TOWN</span>
+            <h2 class="day-title">古城探索與寺廟洗禮</h2>
             <ul>
-                <li>柴迪隆寺 (Wat Chedi Luang)</li>
-                <li>帕邢寺 (Wat Phra Singh)</li>
-                <li>在地文青咖啡館巡禮</li>
-                <li>古城週日夜市 (若日期符合)</li>
+                <li>租借機車，深入古城小巷</li>
+                <li>參拜柴迪隆寺 Wat Chedi Luang</li>
+                <li>下午茶：Akha Ama Coffee 在地咖啡豆</li>
+                <li>週日大夜市 (Sunday Night Market)</li>
             </ul>
-        </div>
-
-        <!-- 你可以依照這個結構繼續複製 Day 03, 04... -->
-        <div class="day-card">
-            <div class="day-num">03 ... 07</div>
-            <div class="day-title">更多行程規劃中...</div>
-            <p>在這裡繼續寫下你的清邁足跡。</p>
-        </div>
+            <div class="tip-box">
+                <strong>💡 旅遊小提醒：</strong><br>
+                進寺廟記得穿著過膝褲子與遮肩上衣。建議隨身攜帶薄外套，室內冷氣較強。
+            </div>
+        </article>
 
     </div>
 </main>
 
 <footer>
     <div class="wrap">
-        &copy; 2026 CHIANG MAI TRAVEL DIARY.
+        &copy; 2026 TRAVEL DIARY. CAPTURED IN CHIANG MAI.
     </div>
 </footer>
 

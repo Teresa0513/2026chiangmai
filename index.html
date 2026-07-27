@@ -3,480 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 清邁．夏日慢活古城之旅</title>
-    <!-- 引入 Google 字體 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <!-- 引入 FontAwesome 圖示 -->
+    <title>2026 清邁．媽咪與寶貝的夏日慢活冒險</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #2D5A27; /* 森林綠 */
-            --secondary-color: #D4A373; /* 大地棕 */
-            --accent-color: #E07A5F; /* 夕陽橘 */
-            --bg-color: #FDFBF7; /* 米白色背景 */
-            --text-color: #333;
+            --primary-color: #4A6741; /* 溫潤森林綠 */
+            --secondary-color: #C89666; /* 暖陽大地色 */
+            --accent-color: #E67E22; /* 活力橘 */
+            --bg-color: #FAF8F2; /* 柔和米色 */
             --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            overflow-x: hidden;
+            color: #444;
+            line-height: 1.6;
         }
 
-        /* Hero Section */
+        /* 縮減後的 Header */
         header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1590761424785-e6308061612e?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+            height: 45vh; /* 縮減高度至螢幕約 45% */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            padding: 0 20px;
+            border-bottom: 8px solid var(--secondary-color);
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
             font-weight: 300;
-            letter-spacing: 5px;
-            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .family-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 20px;
+            max-width: 900px;
+            margin: -40px auto 60px; /* 稍微往上疊加在 Header 上 */
+            padding: 0 20px;
         }
 
-        /* Flight Info Box */
+        /* 核心資訊卡片 */
         .info-card {
             background: var(--white);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
-            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        /* 成員標記 */
+        .member-badge {
+            display: inline-block;
+            background: #FDF2E9;
+            color: #E67E22;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            font-weight: bold;
         }
 
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-        }
+        /* 表格優化 */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #f0f0f0; }
+        th { color: var(--secondary-color); font-size: 0.9rem; }
 
-        th { color: var(--secondary-color); font-weight: 700; }
-
-        /* Timeline / Daily Itinerary */
-        .timeline {
-            position: relative;
-            margin-top: 40px;
-        }
-
+        /* 行程卡片 */
+        .day-group { margin-bottom: 30px; }
         .day-card {
             background: var(--white);
             border-radius: 15px;
-            margin-bottom: 30px;
-            overflow: hidden;
+            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
+            border-left: 6px solid var(--primary-color);
+            transition: 0.3s;
         }
-
-        .day-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .day-card:hover {
-            transform: translateY(-5px);
-        }
+        .day-card:hover { transform: translateX(5px); }
 
         .day-header {
-            background: var(--primary-color);
-            color: white;
             padding: 15px 25px;
+            background: #f9f9f9;
+            border-radius: 15px 15px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .day-content {
-            padding: 25px;
-        }
+        .day-header h3 { color: var(--primary-color); font-size: 1.2rem; }
+        .day-body { padding: 20px 25px; }
 
-        .spot-item {
-            margin-bottom: 15px;
+        .spot-row {
             display: flex;
-            align-items: flex-start;
             gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
         }
+        .spot-row i { color: var(--secondary-color); margin-top: 5px; font-size: 1.1rem; }
+        .spot-row b { color: #333; display: block; margin-bottom: 2px; }
+        .spot-row p { font-size: 0.95rem; color: #666; }
 
-        .spot-item i {
-            color: var(--secondary-color);
-            margin-top: 5px;
-        }
-
-        .tag {
-            background: #f0f0f0;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: #666;
-            margin-left: 8px;
-        }
-
-        /* Tips Section */
-        .tips-grid {
+        /* 貼心提示 */
+        .tips-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-
-        .tip-box {
-            background: #fdfdfd;
-            border: 1px dashed var(--secondary-color);
+        .tip-item {
+            background: #fff;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            border: 1px solid #eee;
         }
+        .tip-item h4 { color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 
-        .tip-box h4 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        /* Footer */
         footer {
             background: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px;
             margin-top: 60px;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
-            th, td { font-size: 0.9rem; padding: 8px; }
-            .info-card { padding: 15px; }
+            header { height: 35vh; }
+            .hero-title { font-size: 1.8rem; }
+            .container { margin-top: -20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <p class="hero-subtitle">Summer Slow Living 2026</p>
-        <h1 class="hero-title">清邁．北方玫瑰之旅</h1>
-        <p>2026.08.02 - 2026.08.08</p>
+        <p class="hero-subtitle">SUMMER FAMILY TRIP</p>
+        <h1 class="hero-title">2026 清邁．媽咪與寶貝的夏日慢活冒險</h1>
+        <div class="family-tag">
+            <i class="fas fa-child"></i> 2 位勇敢媽咪 + 3 位超萌小隊員
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem;">2026.08.02 - 2026.08.08</p>
     </header>
 
     <div class="container">
-        <!-- 航班與交通 -->
+        
+        <!-- 交通資訊 -->
         <section class="info-card">
-            <h2 class="section-title"><i class="fas fa-plane-departure"></i> 航班與交通資訊</h2>
-            <div style="overflow-x: auto;">
+            <h2 class="section-title"><i class="fas fa-paper-plane"></i> 航班與接送資訊</h2>
+            <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>日期</th>
-                            <th>航段 / 車次</th>
+                            <th>行程</th>
+                            <th>班次 / 航段</th>
                             <th>時間</th>
                             <th>備註</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>8/2 (日)</td>
-                            <td>高鐵 646 (左營-桃園)</td>
+                            <td><b>出發高鐵</b></td>
+                            <td>646 次 (左營-桃園)</td>
                             <td>13:35 - 15:09</td>
-                            <td>提早抵達辦理登機</td>
+                            <td>預備親子用品</td>
                         </tr>
                         <tr>
-                            <td>8/2 (日)</td>
-                            <td>亞航 FD243 (TPE-CNX)</td>
+                            <td><b>去程航班</b></td>
+                            <td>亞航 FD243</td>
                             <td>18:55 - 21:45</td>
-                            <td>T1 航廈, 20kg 行李</td>
+                            <td>含 20kg 行李 / T1</td>
                         </tr>
                         <tr>
-                            <td>8/9 (日)</td>
-                            <td>亞航 FD242 (CNX-TPE)</td>
+                            <td><b>回程航班</b></td>
+                            <td>亞航 FD242</td>
                             <td>00:05 - 04:55</td>
                             <td>8/8 深夜前往機場</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style="margin-top: 20px; font-size: 0.9rem; color: #666;">
-                <p><strong>訂位代號：</strong> <span style="color: var(--accent-color);">NGW8XA</span></p>
-                <p><strong>機場接送：</strong> 8/8 預約「喬家 2000」前往機場。</p>
+            <div style="margin-top: 20px;">
+                <span class="member-badge">訂位代號: NGW8XA</span>
+                <span class="member-badge">接送預約: 喬家 2000 (8/8)</span>
             </div>
         </section>
 
         <!-- 每日行程 -->
-        <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 每日詳細行程</h2>
-        
-        <div class="timeline">
-            <!-- Day 1 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 1 | 8/2 (日)</span>
-                    <span>飛向北方玫瑰</span>
+        <h2 class="section-title"><i class="fas fa-map-signs"></i> 七天六夜冒險地圖</h2>
+
+        <!-- Day 1 -->
+        <div class="day-card">
+            <div class="day-header">
+                <h3>Day 1 | 8/2 出發北方玫瑰</h3>
+                <i class="fas fa-star" style="color: #F1C40F;"></i>
+            </div>
+            <div class="day-body">
+                <div class="spot-row">
+                    <i class="fas fa-suitcase-rolling"></i>
+                    <div><b>集合出發</b><p>搭乘高鐵前往桃機，辦理報到，準備孩子們最期待的飛機時光。</p></div>
                 </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-suitcase"></i>
-                        <div>下午：桃園機場辦理亞航登機手續。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>晚上：抵達清邁國際機場 (CNX)，辦理入境並搭車前往飯店。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-utensils"></i>
-                        <div>宵夜：飯店附近簡單用餐或 7-11 尋寶。</div>
-                    </div>
+                <div class="spot-row">
+                    <i class="fas fa-hotel"></i>
+                    <div><b>抵達清邁</b><p>預約機場接機直達飯店，孩子休息，媽咪們可以去 7-11 採買明天早餐與備品。</p></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Day 2 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 2 | 8/3 (一)</span>
-                    <span>古城漫步與文青市集</span>
+        <!-- Day 2 -->
+        <div class="day-card">
+            <div class="day-header">
+                <h3>Day 2 | 8/3 古城漫步與文青市集</h3>
+                <span>寧曼路散策</span>
+            </div>
+            <div class="day-body">
+                <div class="spot-row">
+                    <i class="fas fa-camera-retro"></i>
+                    <div><b>塔佩門 Tha Pae Gate</b><p>必打卡地點！孩子們可以看廣場上的鴿子（拍照要注意安全哦）。</p></div>
                 </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-camera"></i>
-                        <div>上午：【塔佩門 Tha Pae Gate】紅磚牆拍照。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-coins"></i>
-                        <div>換匯：【巫宗雄 Mr. Pierre】領取最優匯率。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-shopping-basket"></i>
-                        <div>午間：【瓦洛洛市集】體驗在地生活，採買果乾雜貨。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-ice-cream"></i>
-                        <div>下午：寧曼區【白色市集 White Market】與【Think Park】。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-utensils"></i>
-                        <div>晚餐：【烤山曼尼 Manee Roast Duck】道地燒臘。</div>
-                    </div>
+                <div class="spot-row">
+                    <i class="fas fa-wallet"></i>
+                    <div><b>換匯時間</b><p>前往「巫宗雄 Mr. Pierre」換取旅費。</p></div>
+                </div>
+                <div class="spot-row">
+                    <i class="fas fa-store"></i>
+                    <div><b>白色市集 & Think Park</b><p>文青質感小店多，非常適合幫孩子買可愛的小洋裝或手作玩具。</p></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Day 3 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 3 | 8/4 (二)</span>
-                    <span>自然與生態一日遊 <span class="tag">B行程</span></span>
+        <!-- Day 3 -->
+        <div class="day-card" style="border-left-color: var(--accent-color);">
+            <div class="day-header">
+                <h3>Day 3 | 8/4 自然生態一日遊</h3>
+                <span style="color:var(--accent-color)">親子亮點行程!</span>
+            </div>
+            <div class="day-body">
+                <div class="spot-row">
+                    <i class="fas fa-elephant"></i>
+                    <div><b>Elephant Poo Poo Paper Park</b><p>教育環保意義十足！孩子可以親手做大象便便紙，乾淨又衛生。</p></div>
                 </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-leaf"></i>
-                        <div>【Elephant Poo Poo Paper Park】環保大象紙 DIY 體驗。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-elephant"></i>
-                        <div>【CAFÉ Elephant】在大象陪伴下喝咖啡。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-gopuram"></i>
-                        <div>【清邁藍廟 Wat Ban Den】欣賞壯麗藍色建築群。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-tint"></i>
-                        <div>【黏黏瀑布】奇蹟瀑布攀爬體驗。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-utensils"></i>
-                        <div>晚餐：【清邁村民偶涼吃牛排】。</div>
-                    </div>
+                <div class="spot-row">
+                    <i class="fas fa-coffee"></i>
+                    <div><b>CAFÉ Elephant</b><p>在溪邊喝咖啡看大象，孩子近距離觀察動物的療癒時光。</p></div>
+                </div>
+                <div class="spot-row">
+                    <i class="fas fa-shoe-prints"></i>
+                    <div><b>黏黏瀑布 Sticky Waterfall</b><p>防滑的岩石，大人小孩都能輕鬆「爬瀑布」，清涼消暑。</p></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Day 4 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 4 | 8/5 (三)</span>
-                    <span>寧曼美學與網紅運河</span>
-                </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-shopping-bag"></i>
-                        <div>白天：深入探索【One Nimman】與【MAYA】購物中心。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-water"></i>
-                        <div>傍晚：【Khlong Mae Kha 運河】清邁小京都散策。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <div>提示：建議傍晚點燈後前往，氛圍最棒！</div>
-                    </div>
+        <!-- Day 4-7 簡略顯示 (可比照上面格式擴充) -->
+        <div class="day-card">
+            <div class="day-header"><h3>Day 4 | 8/5 寧曼生活美學 & 網紅運河</h3></div>
+            <div class="day-body">
+                <p>逛逛 One Nimman 與 MAYA 百貨（有冷氣孩子才待得住），傍晚前往 <b>Khlong Mae Kha 運河</b>看亮燈風景。</p>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header"><h3>Day 5 | 8/6 廚藝教室 & 長康路夜市</h3></div>
+            <div class="day-body">
+                <p>上午<b>泰式烹飪課程</b>（孩子可當小幫手），下午 SPA 放鬆，晚上逛<b>長康路夜市</b>採買伴手禮。</p>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header"><h3>Day 6 | 8/7 夜間動物園冒險</h3></div>
+            <div class="day-body">
+                <div class="spot-row">
+                    <i class="fas fa-hippo"></i>
+                    <div><b>Chiang Mai Night Safari</b><p>15:30 出發。乘坐專屬遊園車，近距離看草食動物與長頸鹿，孩子絕對會尖叫驚呼！</p></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Day 5 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 5 | 8/6 (四)</span>
-                    <span>廚藝教室與夜生活</span>
-                </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-mortar-pestle"></i>
-                        <div>09:00：【泰式烹飪課程】學習紅咖哩與打拋豬。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-spa"></i>
-                        <div>下午：飯店午休或預約泰式 SPA 舒壓。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-moon"></i>
-                        <div>晚上：【長康路夜市 Night Bazaar】採買伴手禮。</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 6 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 6 | 8/7 (五)</span>
-                    <span>夜間動物大冒險</span>
-                </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-om"></i>
-                        <div>白天：古城佛寺巡禮（柴迪隆寺、帕邢寺）。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-hippo"></i>
-                        <div>15:30：【清邁夜間動物園 Chiang Mai Night Safari】。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-bus"></i>
-                        <div>活動：乘坐遊園車近距離觀察野生動物。</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 7 -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span>Day 7 | 8/8 (六)</span>
-                    <span>最終採買與歸途</span>
-                </div>
-                <div class="day-content">
-                    <div class="spot-item">
-                        <i class="fas fa-store"></i>
-                        <div>08:30：【真心市集 JJ Market】清邁最美早市。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>12:00：退房，行李寄放櫃台。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-coffee"></i>
-                        <div>下午：市區咖啡廳最後巡禮。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-shuttle-van"></i>
-                        <div>21:30：由「喬家 2000」送機。</div>
-                    </div>
-                    <div class="spot-item">
-                        <i class="fas fa-plane"></i>
-                        <div>00:05：搭乘 FD242 返回桃園。</div>
-                    </div>
-                </div>
+        <div class="day-card">
+            <div class="day-header"><h3>Day 7 | 8/8 最終採買與歸途</h3></div>
+            <div class="day-body">
+                <p>早起衝 <b>Jing Jai Market</b>，清邁最美市集。午飯後退房行李寄存，市區咖啡廳喝最後一杯泰奶，21:30 出發前往機場。</p>
             </div>
         </div>
 
         <!-- 旅遊筆記 -->
-        <h2 class="section-title"><i class="fas fa-briefcase"></i> 旅遊筆記 Tips</h2>
-        <div class="tips-grid">
-            <div class="tip-box">
-                <h4><i class="fas fa-money-bill-wave"></i> 換匯建議</h4>
-                <p>推薦古城「巫宗雄」，匯率極佳。美金或台幣現鈔皆可對比。</p>
+        <h2 class="section-title"><i class="fas fa-heart"></i> 給兩位媽咪的貼心筆記</h2>
+        <div class="tips-section">
+            <div class="tip-item">
+                <h4><i class="fas fa-umbrella"></i> 雨季必備</h4>
+                <p>8月午後常有雷陣雨，建議隨身攜帶輕便雨衣或一把抗強風傘。孩子多備一件薄外套避免冷氣太強。</p>
             </div>
-            <div class="tip-box">
-                <h4><i class="fas fa-umbrella"></i> 季節與裝備</h4>
-                <p>8月為雨季，建議攜帶輕便雨具。前往瀑布請準備止滑鞋或換洗衣服。</p>
+            <div class="tip-item">
+                <h4><i class="fas fa-shopping-cart"></i> 換匯與支付</h4>
+                <p>古城區巫宗雄匯率好，但市區很多小店也支援 GLN 或信用卡支付，可以分散旅費風險。</p>
             </div>
-            <div class="tip-box">
-                <h4><i class="fas fa-shopping-cart"></i> 市集筆記</h4>
-                <p>JJ Market 務必 08:30 前抵達。White Market 週末限定下午開始。</p>
-            </div>
-            <div class="tip-box">
-                <h4><i class="fas fa-bolt"></i> 電力與網路</h4>
-                <p>電壓 220V，插頭通用。建議購買 AIS 或 TrueMove 網卡，收訊較穩。</p>
+            <div class="tip-item">
+                <h4><i class="fas fa-first-aid"></i> 應急小包</h4>
+                <p>清邁蚊蟲多，防蚊液與止癢膏是必修課。建議也備著基本的腸胃與感冒常備藥。</p>
             </div>
         </div>
+
     </div>
 
     <footer>
-        <p>Chiang Mai 2026 - Have a Nice Trip</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Made for Your Slow Living Journey</p>
+        <p>© 2026 Chiang Mai - Mommies' Slow Life Journey</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">祝福媽咪與寶貝們擁有一段魔法般的森林時光！</p>
     </footer>
 
-    <script>
-        // 簡單的捲動動畫
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.day-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
 </body>
 </html>

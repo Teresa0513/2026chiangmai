@@ -25,49 +25,56 @@
             line-height: 1.8;
         }
 
-        /* 縮減高度的標頭：使用清邁古城意象背景 */
-/* 優化後的 Header 樣式 */
+/* --- 精美雜誌風格 Header --- */
 header {
-    height: 50vh; /* 稍微增加高度，讓圖片更完整 */
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), 
+    height: 55vh; /* 增加高度，展現手繪圖的開闊感 */
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
                 url('./head.png') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white; /* 統一文字為白色 */
     position: relative;
-    border-bottom: 6px solid var(--warm-brown);
+    border-bottom: 3px solid #D4A373; /* 改為更細的金色/陶土色邊框 */
 }
 
+/* 頂部小標：增加字間距，營造高級感 */
 .hero-subtitle {
-    font-size: 1.1rem;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* 加強陰影確保可讀性 */
-    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5em; /* 關鍵：極大的字間距 */
+    color: #5D4037; /* 深咖啡色，與水彩線條呼應 */
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
+/* 主標題：移除白色方塊，改用優雅的邊框或純文字 */
 .hero-title {
-    font-size: 2.5rem;
-    color: #333; /* 標題維持深色增加質感 */
-    background: rgba(255, 255, 255, 0.85); /* 稍微調高不透明度 */
-    padding: 15px 40px;
-    border-radius: 8px; /* 稍微方正一點點更有質感 */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px); /* 背景模糊效果，非常現代感 */
-    margin: 10px 0;
+    font-size: 3rem;
+    color: #2D3436;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 0;
+    /* 這裡不再使用背景色塊，改用上下兩條細線 */
+    border-top: 1px solid rgba(93, 64, 55, 0.3);
+    border-bottom: 1px solid rgba(93, 64, 55, 0.3);
+    letter-spacing: 0.1em;
 }
 
+/* 日期：輕盈地浮動在下方 */
 .hero-date {
-    margin-top: 10px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* 加強陰影 */
-    background: rgba(0, 0, 0, 0.2); /* 給日期一點淡淡的底色 */
-    padding: 2px 15px;
-    border-radius: 20px;
+    margin-top: 25px;
+    font-size: 1.1rem;
+    color: #8D6E63;
+    font-weight: 300;
+    font-family: 'Playfair Display', serif; /* 如果有引入英文襯線體會更有質感 */
+}
+
+/* 增加一個裝飾用的小 icon */
+.hero-date::before, .hero-date::after {
+    content: " — ";
+    color: #D4A373;
 }
 
         .container {

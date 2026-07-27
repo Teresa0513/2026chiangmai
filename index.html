@@ -7,103 +7,76 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
 
+        /* 基礎變數 */
         :root {
-            --primary-dark: #123334;
+            --primary: #123334;
             --accent: #ffd36d;
-            --bg-sand: #f8f7f3;
+            --bg: #f8f7f3;
+            --text: #333;
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--bg); font-family: 'Noto Sans TC', sans-serif; color: var(--text); line-height: 1.7; }
 
-        body { 
-            margin: 0; 
-            background: var(--bg-sand); 
-            font-family: 'Noto Sans TC', sans-serif;
-            color: var(--primary-dark);
-            line-height: 1.6;
-        }
-
-        /* 增強：Hero 區塊加上微過渡與視差感 */
+        /* --- Header 區塊 --- */
         .hero {
-            min-height: 100vh; /* 改為滿版 */
+            min-height: 550px;
+            color: #fff;
+            background: linear-gradient(90deg, rgba(18,51,52,0.85), rgba(18,51,52,0.3)), 
+                        url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85') center/cover;
             display: flex;
             flex-direction: column;
-            color: #fff;
-            background: linear-gradient(90deg, rgba(18,51,52,0.9), rgba(18,51,52,0.25)), 
-                        url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85') center/cover;
-            background-attachment: fixed; /* 視差效果 */
         }
 
-        .wrap { max-width: 1080px; margin: auto; padding: 0 26px; width: 100%; }
+        .wrap { max-width: 1000px; margin: auto; padding: 0 25px; width: 100%; }
 
         nav {
             height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: .75rem;
-            letter-spacing: .15em;
-            text-transform: uppercase;
+            font-size: .8rem;
+            letter-spacing: .12em;
         }
 
-        .logo { font: 700 1.4rem 'Playfair Display'; }
+        .logo { font: 700 1.2rem 'Playfair Display'; }
 
-        .copy { 
-            padding-top: 12vh; 
-            animation: fadeInUp 1s ease-out; /* 登場動畫 */
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .eyebrow { color: var(--accent); font-size: .75rem; letter-spacing: .2em; font-weight: 500; }
-
+        .copy { padding-top: 80px; }
+        .eyebrow { color: var(--accent); font-size: .75rem; letter-spacing: .18em; font-weight: 700; margin-bottom: 10px; }
+        
         .hero h1 { 
-            font: 500 clamp(3.5rem, 10vw, 8rem)/0.9 'Playfair Display'; 
+            font: 500 clamp(3.5rem, 8vw, 7rem)/0.85 'Playfair Display'; 
             letter-spacing: -.05em; 
-            margin: 24px 0; 
+            margin: 15px 0; 
         }
-
         .hero i { color: var(--accent); font-style: normal; }
+        .hero p { max-width: 380px; font-size: 0.95rem; opacity: 0.9; }
 
-        .hero p { 
-            max-width: 400px; 
-            line-height: 2; 
-            opacity: 0.9;
-            font-weight: 300;
+        /* --- 行程內容區塊 (取代 Iframe) --- */
+        .content-section { padding: 80px 0; }
+        
+        .day-card {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--primary);
         }
 
-        /* 改進：Iframe 容器 */
-        .frame-container {
-            width: 100%;
-            background: var(--bg-sand);
-            padding-top: 50px;
-        }
+        .day-num { font-family: 'Playfair Display'; font-size: 2rem; color: var(--primary); margin-bottom: 10px; border-bottom: 1px solid #eee; display: inline-block; padding-bottom: 5px; }
+        .day-title { font-size: 1.4rem; font-weight: 700; margin: 10px 0 20px; color: #111; }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; }
 
-        .frame {
-            display: block;
-            border: 0;
-            width: 100%;
-            height: 2500px; /* 這裡仍建議內容改為直接寫入 HTML */
-            transition: opacity 0.5s;
-        }
+        footer { text-align: center; padding: 60px 0; font-size: 0.8rem; opacity: 0.5; letter-spacing: 0.1em; }
 
-        /* 頁尾 */
-        footer {
-            padding: 100px 0 50px;
-            text-align: center;
-            font-size: 0.8rem;
-            opacity: 0.6;
-            letter-spacing: 0.1em;
-        }
-
+        /* 手機版調整 */
         @media(max-width:650px){
-            .hero { background-attachment: scroll; } /* 手機關閉視差提升效能 */
-            .copy { padding-top: 80px; }
-            .hero h1 { margin: 15px 0; }
+            .hero { min-height: 450px; }
+            .copy { padding-top: 50px; }
+            .day-card { padding: 25px; }
         }
     </style>
 </head>
@@ -118,41 +91,53 @@
         <div class="copy">
             <div class="eyebrow">A SEVEN DAY TRAVEL NOTE</div>
             <h1>Dear,<br><i>Chiang Mai.</i></h1>
-            <p>從尼曼的晨光、古城的巷子，到夜市裡的香氣。這次，不趕行程，我們慢慢走。</p>
+            <p>從尼曼的晨光、古城的巷子，到夜市裡的香氣。這次，我們慢慢走。</p>
         </div>
     </div>
 </header>
 
-<main class="frame-container">
-    <!-- 如果在同網域，這段 JS 才有作用 -->
-    <iframe id="itinerary" class="frame" src="chiangmai-detailed-itinerary.html" scrolling="no"></iframe>
+<main class="content-section">
+    <div class="wrap">
+        
+        <!-- Day 01 -->
+        <div class="day-card">
+            <div class="day-num">01</div>
+            <div class="day-title">抵達清邁：尼曼區的午後</div>
+            <ul>
+                <li>搭乘飛機抵達清邁國際機場 (CNX)</li>
+                <li>尼曼區 (Nimman) 飯店 Check-in</li>
+                <li>One Nimman 廣場散步與晚餐</li>
+                <li>深夜按摩體驗</li>
+            </ul>
+        </div>
+
+        <!-- Day 02 -->
+        <div class="day-card">
+            <div class="day-num">02</div>
+            <div class="day-title">古城探索與寺廟洗禮</div>
+            <ul>
+                <li>柴迪隆寺 (Wat Chedi Luang)</li>
+                <li>帕邢寺 (Wat Phra Singh)</li>
+                <li>在地文青咖啡館巡禮</li>
+                <li>古城週日夜市 (若日期符合)</li>
+            </ul>
+        </div>
+
+        <!-- 你可以依照這個結構繼續複製 Day 03, 04... -->
+        <div class="day-card">
+            <div class="day-num">03 ... 07</div>
+            <div class="day-title">更多行程規劃中...</div>
+            <p>在這裡繼續寫下你的清邁足跡。</p>
+        </div>
+
+    </div>
 </main>
 
 <footer>
     <div class="wrap">
-        &copy; 2026 TRAVEL DIARY. CREATED WITH LOVE.
+        &copy; 2026 CHIANG MAI TRAVEL DIARY.
     </div>
 </footer>
-
-<script>
-    // 嘗試動態調整 iframe 高度 (需同網域)
-    const iframe = document.getElementById('itinerary');
-    iframe.onload = function() {
-        try {
-            // 隱藏內部特定元素
-            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const topEl = innerDoc.querySelector('.top');
-            const tabsEl = innerDoc.querySelector('.tabs');
-            if(topEl) topEl.style.display = 'none';
-            if(tabsEl) tabsEl.style.display = 'none';
-            
-            // 自動調整高度（簡單範例）
-            iframe.style.height = innerDoc.documentElement.scrollHeight + 'px';
-        } catch (e) {
-            console.log("CORS block or other error: ", e);
-        }
-    };
-</script>
 
 </body>
 </html>

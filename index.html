@@ -3,236 +3,251 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>清邁七日旅行日記</title>
+    <title>Dear Chiang Mai | 2026 旅行日記</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,500;1,700&display=swap');
 
         :root {
-            --primary: #123334;
+            --dark: #123334;
             --accent: #ffd36d;
-            --bg: #f8f7f3;
-            --text-main: #2d2d2d;
+            --sand: #f8f7f3;
+            --gray: #e0ddd5;
         }
 
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
-        body { margin: 0; background: var(--bg); font-family: 'Noto Sans TC', sans-serif; color: var(--text-main); line-height: 1.8; }
+        body { 
+            margin: 0; 
+            background: var(--sand); 
+            font-family: 'Noto Sans TC', sans-serif; 
+            color: var(--dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-        /* --- Header --- */
-        .hero {
-            height: 70vh;
+        /* --- 高級感載入動畫 --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 頂部導覽列 --- */
+        .global-nav {
+            position: absolute;
+            top: 0; width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            z-index: 100;
             color: #fff;
-            background: linear-gradient(rgba(18,51,52,0.7), rgba(18,51,52,0.3)), 
+        }
+        .logo { font: 700 1.5rem 'Playfair Display'; letter-spacing: 0.1em; }
+        .map-link { 
+            color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.2em;
+            border-bottom: 1px solid var(--accent); padding-bottom: 4px;
+        }
+
+        /* --- Hero 區塊：大器開場 --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(18,51,52,0.6), rgba(18,51,52,0.6)), 
                         url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85') center/cover;
             display: flex;
-            flex-direction: column;
-        }
-
-        .wrap { max-width: 900px; margin: auto; padding: 0 30px; width: 100%; }
-
-        /* 頂部導覽列 */
-        .top-nav {
-            height: 90px;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-        .logo { font: 700 1.2rem 'Playfair Display'; letter-spacing: 0.1em; }
-        
-        /* 地圖連結按鈕樣式 */
-        .map-btn-top {
-            text-decoration: none;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 6px 15px;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s;
-        }
-        .map-btn-top:hover { background: var(--accent); color: var(--primary); }
-
-        .hero-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 50px; }
-        .hero h1 { font: 500 clamp(3.5rem, 10vw, 7rem)/0.85 'Playfair Display'; margin: 20px 0; }
-        .hero i { color: var(--accent); font-style: normal; }
-
-        /* --- 固定日期與地圖導覽列 --- */
-        .sticky-nav-wrapper {
-            position: sticky;
-            top: 0;
-            background: rgba(248, 247, 243, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 15px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .date-tabs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-        }
-        .date-tabs::-webkit-scrollbar { display: none; }
-
-        .tab-btn {
-            text-decoration: none;
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            padding: 6px 14px;
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-        .tab-btn:hover, .tab-btn.active { background: var(--primary); color: var(--accent); }
-
-        /* 第二個地圖連結（放在日期列旁） */
-        .map-link-text {
-            text-decoration: none;
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            border-left: 1px solid #ddd;
-            padding-left: 15px;
-            margin-left: 10px;
-        }
-
-        /* --- 行程內容 --- */
-        .main-content { padding: 60px 0; }
-        .day-card {
-            background: #fff;
-            padding: 50px;
-            margin-bottom: 80px;
-            border-radius: 2px;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.03);
+            justify-content: center;
+            text-align: center;
+            color: #fff;
             position: relative;
         }
-        .day-card::before { content: ""; display: block; height: 100px; margin-top: -100px; visibility: hidden; }
 
-        .day-num { font-family: 'Playfair Display'; font-size: 3rem; color: #eee; position: absolute; top: 30px; right: 50px; }
-        .day-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 25px; color: var(--primary); }
-
-        ul { list-style: none; padding: 0; }
-        li { position: relative; padding-left: 25px; margin-bottom: 12px; }
-        li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
-
-        .photo-placeholder {
-            width: 100%; height: 350px; background: #eee center/cover no-repeat; margin-top: 30px; border-radius: 4px;
+        .hero-content { animation: fadeInUp 1.2s ease-out; }
+        .hero .eyebrow { font-size: 0.9rem; letter-spacing: 0.5em; text-transform: uppercase; margin-bottom: 20px; color: var(--accent); }
+        .hero h1 { font: 700 clamp(4rem, 15vw, 10rem)/0.8 'Playfair Display'; margin: 0; letter-spacing: -0.02em; }
+        .hero h1 i { font-style: italic; font-weight: 400; color: var(--accent); }
+        .scroll-hint { 
+            position: absolute; bottom: 40px; font-size: 0.7rem; letter-spacing: 0.3em; 
+            text-transform: uppercase; opacity: 0.6;
         }
 
-        footer { text-align: center; padding: 60px 0; color: #999; font-size: 0.8rem; }
+        /* --- 懸浮日期導覽：極簡設計 --- */
+        .sticky-nav {
+            position: sticky; top: 0; 
+            background: rgba(248, 247, 243, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 90;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+        .nav-inner { 
+            max-width: 1200px; margin: auto; padding: 0 40px;
+            display: flex; justify-content: center; gap: clamp(10px, 4vw, 40px);
+        }
+        .nav-item {
+            text-decoration: none; color: var(--dark);
+            font: 700 1rem 'Playfair Display'; opacity: 0.4; transition: 0.3s;
+        }
+        .nav-item.active, .nav-item:hover { opacity: 1; color: var(--dark); }
+        .nav-item.active::after { content: ""; display: block; height: 2px; background: var(--dark); margin-top: 4px; }
 
-        @media(max-width:650px){
-            .top-nav { height: 70px; }
-            .day-card { padding: 30px 20px; }
-            .map-link-text { display: none; } /* 手機版隱藏文字版地圖連結以免擠擁 */
+        /* --- 內容區塊：雜誌排版 --- */
+        .container { max-width: 1100px; margin: auto; padding: 100px 40px; }
+
+        .day-section { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 80px; 
+            margin-bottom: 150px; 
+            align-items: center;
+        }
+        .day-section:nth-child(even) { direction: rtl; }
+        .day-section:nth-child(even) .text-box { direction: ltr; }
+
+        .image-box { position: relative; overflow: hidden; }
+        .image-box img { width: 100%; height: 600px; object-fit: cover; border-radius: 0; display: block; }
+        .image-box::after {
+            content: ""; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3); pointer-events: none;
+        }
+
+        .text-box { padding: 20px 0; }
+        .day-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 30px; }
+        .day-num { font: 700 4rem 'Playfair Display'; color: var(--dark); line-height: 1; }
+        .day-tag { font-size: 0.8rem; letter-spacing: 0.2em; color: #a09d94; text-transform: uppercase; }
+        
+        .day-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 30px 0; line-height: 1.2; }
+        
+        ul { padding: 0; list-style: none; }
+        li { 
+            padding: 15px 0; border-bottom: 1px solid var(--gray);
+            font-size: 1.1rem; display: flex; align-items: center; gap: 15px;
+        }
+        li::before { content: "—"; color: var(--accent); font-weight: bold; }
+
+        /* --- 頁尾 --- */
+        footer { 
+            background: var(--dark); color: #fff; padding: 100px 0; text-align: center; 
+        }
+        footer .logo { margin-bottom: 20px; display: block; }
+        footer p { opacity: 0.5; font-size: 0.8rem; letter-spacing: 0.1em; }
+
+        /* --- 手機版調整 --- */
+        @media (max-width: 900px) {
+            .global-nav { padding: 20px; }
+            .day-section { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
+            .day-section:nth-child(even) { direction: ltr; }
+            .image-box img { height: 400px; }
+            .hero h1 { font-size: 4.5rem; }
+            .nav-inner { gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-<header class="hero">
-    <div class="wrap">
-        <nav class="top-nav">
-            <span class="logo">CHIANG MAI / 2026</span>
-            <!-- 這裡放你的 Google Map 連結 -->
-            <a href="https://www.google.com/maps" target="_blank" class="map-btn-top">OPEN MAP</a>
-        </nav>
+    <nav class="global-nav">
+        <span class="logo">CHIANG MAI / 26</span>
+        <a href="https://www.google.com/maps" target="_blank" class="map-link">EXPLORE MAP</a>
+    </nav>
+
+    <header class="hero">
         <div class="hero-content">
-            <div class="eyebrow" style="color:var(--accent); letter-spacing:.3em; font-weight:700; font-size:.8rem; margin-bottom: 10px;">A SEVEN DAY TRAVEL NOTE</div>
+            <div class="eyebrow">The Soul of Northern Thailand</div>
             <h1>Dear,<br><i>Chiang Mai.</i></h1>
-            <p>2026.08.02 — 08.08</p>
+            <div class="scroll-hint">SCROLL TO DISCOVER</div>
+        </div>
+    </header>
+
+    <div class="sticky-nav">
+        <div class="nav-inner">
+            <a href="#day01" class="nav-item">D1</a>
+            <a href="#day02" class="nav-item">D2</a>
+            <a href="#day03" class="nav-item">D3</a>
+            <a href="#day04" class="nav-item">D4</a>
+            <a href="#day05" class="nav-item">D5</a>
+            <a href="#day06" class="nav-item">D6</a>
+            <a href="#day07" class="nav-item">D7</a>
         </div>
     </div>
-</header>
 
-<!-- 固定導覽列 -->
-<div class="sticky-nav-wrapper">
-    <div class="wrap">
-        <div class="nav-container">
-            <nav class="date-tabs">
-                <a href="#day01" class="tab-btn">D1</a>
-                <a href="#day02" class="tab-btn">D2</a>
-                <a href="#day03" class="tab-btn">D3</a>
-                <a href="#day04" class="tab-btn">D4</a>
-                <a href="#day05" class="tab-btn">D5</a>
-                <a href="#day06" class="tab-btn">D6</a>
-                <a href="#day07" class="tab-btn">D7</a>
-            </nav>
-            <!-- 日期列旁的地圖連結 -->
-            <a href="https://www.google.com/maps" target="_blank" class="map-link-text">
-                📍 Full Map
-            </a>
-        </div>
-    </div>
-</div>
-
-<main class="main-content">
-    <div class="wrap">
-        
+    <main class="container">
         <!-- Day 01 -->
-        <article class="day-card" id="day01">
-            <div class="day-num">01</div>
-            <h2 class="day-title">抵達清邁：尼曼區的午後</h2>
-            <ul>
-                <li>搭乘飛機抵達清邁國際機場 (CNX)</li>
-                <li>尼曼區 Check-in</li>
-                <li>One Nimman 藝術街區散步</li>
-            </ul>
-            <div class="photo-placeholder" style="background-image: url('https://images.unsplash.com/photo-1590332822765-72861e68022a?auto=format&fit=crop&w=800&q=80')"></div>
-        </article>
+        <section class="day-section" id="day01">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1590332822765-72861e68022a?auto=format&fit=crop&w=1000&q=80" alt="Chiang Mai">
+            </div>
+            <div class="text-box">
+                <div class="day-header">
+                    <span class="day-num">01</span>
+                    <span class="day-tag">Arrival & Nimman</span>
+                </div>
+                <h2 class="day-title">抵達清邁：<br>尼曼區的午後晨光</h2>
+                <ul>
+                    <li>長榮航空直飛清邁國際機場</li>
+                    <li>入住尼曼區設計旅店</li>
+                    <li>One Nimman 文創園區散策</li>
+                    <li>首日限定：泰北咖哩麵 Khao Soi</li>
+                </ul>
+            </div>
+        </section>
 
         <!-- Day 02 -->
-        <article class="day-card" id="day02">
-            <div class="day-num">02</div>
-            <h2 class="day-title">古城探索與寺廟洗禮</h2>
-            <ul>
-                <li>租借機車，深入古城小巷</li>
-                <li>參拜柴迪隆寺 Wat Chedi Luang</li>
-            </ul>
-        </article>
+        <section class="day-section" id="day02">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ca1?auto=format&fit=crop&w=1000&q=80" alt="Old Town">
+            </div>
+            <div class="text-box">
+                <div class="day-header">
+                    <span class="day-num">02</span>
+                    <span class="day-tag">Spirit of Temples</span>
+                </div>
+                <h2 class="day-title">古城漫遊：<br>紅磚與信仰的低語</h2>
+                <ul>
+                    <li>契迪龍寺 Wat Chedi Luang</li>
+                    <li>帕邢寺的安靜午後</li>
+                    <li>古城週日大夜市</li>
+                    <li>清邁必備的泰式按摩</li>
+                </ul>
+            </div>
+        </section>
 
-        <!-- Day 03 以此類推... -->
+        <!-- Day 03 (你可以以此結構繼續複製) -->
+        <section class="day-section" id="day03" style="min-height: 400px; opacity: 0.5;">
+            <div class="text-box" style="grid-column: 1 / -1; text-align: center;">
+                <span class="day-num">03 — 07</span>
+                <p>探索仍在繼續，寫下你的專屬故事...</p>
+            </div>
+        </section>
 
-    </div>
-</main>
+    </main>
 
-<footer>
-    <div class="wrap">
-        &copy; 2026 CHIANG MAI TRAVEL DIARY.
-    </div>
-</footer>
+    <footer>
+        <span class="logo">CHIANG MAI / 2026</span>
+        <p>A JOURNEY THROUGH NORTHERN THAILAND</p>
+        <p>&copy; TRAVEL DIARY BY TERESA</p>
+    </footer>
 
-<script>
-    // 滾動時自動標註當前天數
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('.day-card');
-        const navLinks = document.querySelectorAll('.tab-btn');
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
+    <script>
+        // 自動切換導覽列 active 狀態
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.day-section');
+            const navLinks = document.querySelectorAll('.nav-item');
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
         });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-</script>
-
+    </script>
 </body>
 </html>

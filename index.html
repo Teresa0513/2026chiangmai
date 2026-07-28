@@ -25,67 +25,72 @@
             line-height: 1.8;
         }
 
-/* --- 優化後的 Header：解決辨識度問題 --- */
 header {
-    height: 60vh;
-    background: 
-        /* 增加一層稍微深色一點的漸層，讓白字跳出來 */
-        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-        url('./head.png') no-repeat center center/cover;
+    height: 55vh; /* 調整為更適當的比例 */
+    background: url('./head.png') no-repeat center center/cover;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     position: relative;
-    border-bottom: 2px solid #D4A373;
+    padding: 20px;
 }
 
-/* 頂部小標：改為白色，加陰影 */
+/* 核心標籤：毛玻璃質感，解決辨識度問題 */
+.hero-content {
+    background: rgba(255, 255, 255, 0.75); /* 白色半透明底 */
+    backdrop-filter: blur(8px); /* 毛玻璃模糊效果，極具高級感 */
+    -webkit-backdrop-filter: blur(8px);
+    padding: 40px 60px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    max-width: 90%;
+    /* 讓比例看起來像精緻的標籤 */
+}
+
+/* 副標題 */
 .hero-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5em;
-    color: #FFFFFF; /* 改為白色 */
+    color: #8D6E63;
     margin-bottom: 15px;
     font-weight: 500;
-    /* 關鍵：文字陰影，確保在淡色雲朵處也看得到 */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* 主標題：改為白色襯線體，加強厚度與陰影 */
+/* 主標題：使用襯線體，回歸深色提升質感 */
 .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 3.2rem;
-    color: #FFFFFF; /* 改為白色 */
+    font-size: 2.8rem; /* 稍微縮小，避免比例過大 */
+    color: #2D3436;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     margin: 0;
-    padding: 10px 0;
-    /* 多層次陰影：第一層深色邊緣，第二層大範圍柔霧 */
-    text-shadow: 
-        2px 2px 10px rgba(0,0,0,0.5),
-        0 0 20px rgba(0,0,0,0.3);
+    line-height: 1.2;
 }
 
-/* 裝飾線改為金色，增加質感 */
+/* 裝飾細線 */
 .hero-title::after {
     content: "";
     display: block;
-    width: 60px;
-    height: 3px;
+    width: 30px;
+    height: 2px;
     background: #D4A373;
-    margin: 20px auto 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    margin: 20px auto;
 }
 
-/* 日期：改為白色 */
+/* 日期 */
 .hero-date {
-    margin-top: 20px;
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
-    color: #FFFFFF; /* 改為白色 */
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: #5D4037;
+    font-weight: 400;
+}
+
+/* 手機版適應：確保比例不跑掉 */
+@media (max-width: 600px) {
+    .hero-content { padding: 25px 30px; }
+    .hero-title { font-size: 1.8rem; }
+    header { height: 45vh; }
 }
 /* 增加一個裝飾用的小 icon */
 .hero-date::before, .hero-date::after {
@@ -236,9 +241,11 @@ header {
 <body>
 
 <header>
-    <div class="hero-subtitle">CHIANG MAI SUMMER</div>
-    <h1 class="hero-title">清邁親子慢活小旅行</h1>
-    <div class="hero-date">2026.08.02 — 08.08</div>
+    <div class="hero-content">
+        <div class="hero-subtitle">CHIANG MAI SUMMER</div>
+        <h1 class="hero-title">清邁親子慢活小旅行</h1>
+        <div class="hero-date">2026.08.02 — 08.08</div>
+    </div>
 </header>
 
     <div class="container">

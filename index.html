@@ -25,12 +25,12 @@
             line-height: 1.8;
         }
 
-/* --- 高級感排版 Header --- */
+/* --- 優化後的 Header：解決辨識度問題 --- */
 header {
-    height: 65vh; /* 增加高度至 65%，讓畫面更開闊 */
+    height: 60vh;
     background: 
-        /* 中間增加一層微弱的徑向漸層，確保文字易讀但圖面依然清晰 */
-        radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%),
+        /* 增加一層稍微深色一點的漸層，讓白字跳出來 */
+        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
         url('./head.png') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
@@ -41,46 +41,51 @@ header {
     border-bottom: 2px solid #D4A373;
 }
 
-/* 頂部小標：極大間距營造 Lifestyle 雜誌質感 */
+/* 頂部小標：改為白色，加陰影 */
 .hero-subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 0.6em; /* 極寬間距 */
-    color: #5D4037;
-    margin-bottom: 20px;
-    font-weight: 400;
-    opacity: 0.8;
+    font-size: 0.9rem;
+    letter-spacing: 0.5em;
+    color: #FFFFFF; /* 改為白色 */
+    margin-bottom: 15px;
+    font-weight: 500;
+    /* 關鍵：文字陰影，確保在淡色雲朵處也看得到 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* 主標題：使用襯線體 (Serif) 營造優雅感 */
+/* 主標題：改為白色襯線體，加強厚度與陰影 */
 .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 3.5rem; /* 大膽的字體大小 */
-    color: #2D3436;
+    font-size: 3.2rem;
+    color: #FFFFFF; /* 改為白色 */
     font-weight: 700;
     letter-spacing: 0.15em;
     margin: 0;
     padding: 10px 0;
-    /* 移除色塊，改用極細的裝飾線 */
-    position: relative;
+    /* 多層次陰影：第一層深色邊緣，第二層大範圍柔霧 */
+    text-shadow: 
+        2px 2px 10px rgba(0,0,0,0.5),
+        0 0 20px rgba(0,0,0,0.3);
 }
 
-/* 在標題下方加一條點綴性質的小細線 */
+/* 裝飾線改為金色，增加質感 */
 .hero-title::after {
     content: "";
     display: block;
-    width: 40px;
-    height: 2px;
+    width: 60px;
+    height: 3px;
     background: #D4A373;
-    margin: 15px auto 0;
+    margin: 20px auto 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* 日期：輕盈、優雅 */
+/* 日期：改為白色 */
 .hero-date {
     margin-top: 20px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     letter-spacing: 0.2em;
-    color: #8D6E63;
-    font-weight: 400;
+    color: #FFFFFF; /* 改為白色 */
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 /* 增加一個裝飾用的小 icon */
 .hero-date::before, .hero-date::after {

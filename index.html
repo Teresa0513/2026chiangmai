@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 清邁親子慢活小旅行</title>
-    <!-- 引入字體 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- 引入 Noto Serif TC (標題用) 與 Playfair Display (英文美感用) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -26,71 +26,81 @@
         }
 
 header {
-    height: 55vh; /* 調整為更適當的比例 */
-    background: url('./head.png') no-repeat center center/cover;
+    height: 70vh; /* 增加高度，讓畫面有呼吸感 */
+    background: 
+        /* 增加一層很淡的頂部與底部壓暗漸層，確保文字清晰 */
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.15) 100%),
+        url('./head.png') no-repeat center center/cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    padding: 20px;
-}
-
-/* 核心標籤：毛玻璃質感，解決辨識度問題 */
-.hero-content {
-    background: rgba(255, 255, 255, 0.75); /* 白色半透明底 */
-    backdrop-filter: blur(8px); /* 毛玻璃模糊效果，極具高級感 */
-    -webkit-backdrop-filter: blur(8px);
-    padding: 40px 60px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     text-align: center;
-    max-width: 90%;
-    /* 讓比例看起來像精緻的標籤 */
+    position: relative;
+    padding: 0 20px;
 }
 
-/* 副標題 */
+/* 英文副標：使用斜體襯線體，營造歐洲手札質感 */
 .hero-subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 0.5em;
-    color: #8D6E63;
-    margin-bottom: 15px;
-    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #5D4037;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
-/* 主標題：使用襯線體，回歸深色提升質感 */
+/* 主標題：極粗的襯線體，像雜誌封面一樣大膽 */
 .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 2.8rem; /* 稍微縮小，避免比例過大 */
+    font-size: 4rem; /* 大膽的尺寸 */
+    font-weight: 900;
     color: #2D3436;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: -1px; /* 稍微縮小字距，更有張力 */
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
+    /* 這裡不用背景色，改用微妙的白邊光效果 */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 2px 2px 0px rgba(255,255,255,1);
 }
 
-/* 裝飾細線 */
-.hero-title::after {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 2px;
+/* 關鍵：裝飾性橫線，這次做成帶有質感的金色細線 */
+.hero-divider {
+    width: 80px;
+    height: 1px;
     background: #D4A373;
-    margin: 20px auto;
+    margin: 30px 0;
+    position: relative;
 }
 
-/* 日期 */
+.hero-divider::after {
+    content: "●";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FAF8F2;
+    color: #D4A373;
+    font-size: 10px;
+    padding: 0 10px;
+}
+
+/* 日期：乾淨、現代 */
 .hero-date {
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    color: #5D4037;
-    font-weight: 400;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    color: #333;
+    font-weight: 300;
+    background: rgba(255, 255, 255, 0.6); /* 僅日期給一點底色 */
+    padding: 5px 25px;
+    border-radius: 50px;
 }
 
-/* 手機版適應：確保比例不跑掉 */
-@media (max-width: 600px) {
-    .hero-content { padding: 25px 30px; }
-    .hero-title { font-size: 1.8rem; }
-    header { height: 45vh; }
+/* 手機版縮放優化 */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    header { height: 50vh; }
 }
 /* 增加一個裝飾用的小 icon */
 .hero-date::before, .hero-date::after {
@@ -241,11 +251,10 @@ header {
 <body>
 
 <header>
-    <div class="hero-content">
-        <div class="hero-subtitle">CHIANG MAI SUMMER</div>
-        <h1 class="hero-title">清邁親子慢活小旅行</h1>
-        <div class="hero-date">2026.08.02 — 08.08</div>
-    </div>
+    <div class="hero-subtitle">Summer Journey in Chiang Mai</div>
+    <h1 class="hero-title">清邁．親子慢活</h1>
+    <div class="hero-divider"></div>
+    <div class="hero-date">2026.08.02 — 08.08</div>
 </header>
 
     <div class="container">

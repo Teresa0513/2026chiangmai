@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 清邁親子慢活小旅行</title>
-    <!-- 引入 Noto Serif TC (標題用) 與 Playfair Display (英文美感用) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -26,81 +25,94 @@
         }
 
 header {
-    height: 70vh; /* 增加高度，讓畫面有呼吸感 */
+    height: 75vh; /* 更有氣勢的高度 */
     background: 
-        /* 增加一層很淡的頂部與底部壓暗漸層，確保文字清晰 */
-        linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.15) 100%),
+        /* 核心關鍵：左側深色漸層遮罩，讓文字絕對清晰 */
+        linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0) 60%),
         url('./head.png') no-repeat center center/cover;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 水平靠左 */
+    padding: 0 8%;
     position: relative;
-    padding: 0 20px;
+    overflow: hidden;
 }
 
-/* 英文副標：使用斜體襯線體，營造歐洲手札質感 */
-.hero-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.4rem;
-    color: #5D4037;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+/* 內容容器 */
+.header-content {
+    max-width: 600px;
+    text-align: left;
+    color: #FFFFFF;
 }
 
-/* 主標題：極粗的襯線體，像雜誌封面一樣大膽 */
+/* 頂部英文字：乾淨、高端、極簡 */
+.hero-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.4em;
+    color: #D4A373; /* 金色點綴 */
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* 主標題：極致的大尺寸、強烈的層次感 */
 .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 4rem; /* 大膽的尺寸 */
+    font-size: 4.5rem;
     font-weight: 900;
-    color: #2D3436;
-    letter-spacing: -1px; /* 稍微縮小字距，更有張力 */
-    margin: 0;
     line-height: 1.1;
-    /* 這裡不用背景色，改用微妙的白邊光效果 */
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 2px 2px 0px rgba(255,255,255,1);
+    margin: 0 0 20px 0;
+    /* 利用微弱的陰影增加立體感 */
+    text-shadow: 2px 4px 20px rgba(0,0,0,0.3);
 }
 
-/* 關鍵：裝飾性橫線，這次做成帶有質感的金色細線 */
-.hero-divider {
-    width: 80px;
-    height: 1px;
+.hero-title span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* 裝飾短線：簡單但有力量 */
+.hero-line {
+    width: 50px;
+    height: 4px;
     background: #D4A373;
-    margin: 30px 0;
-    position: relative;
+    margin-bottom: 30px;
 }
 
-.hero-divider::after {
-    content: "●";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #FAF8F2;
-    color: #D4A373;
-    font-size: 10px;
-    padding: 0 10px;
-}
-
-/* 日期：乾淨、現代 */
+/* 日期：不再使用藥丸色塊，改用優雅的文字排列 */
 .hero-date {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    letter-spacing: 0.3em;
-    color: #333;
     font-weight: 300;
-    background: rgba(255, 255, 255, 0.6); /* 僅日期給一點底色 */
-    padding: 5px 25px;
-    border-radius: 50px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* 手機版縮放優化 */
+.hero-date i {
+    color: #D4A373;
+    font-size: 0.9rem;
+}
+
+/* RWD 適應 */
 @media (max-width: 768px) {
-    .hero-title { font-size: 2.5rem; }
-    .hero-subtitle { font-size: 1.1rem; }
-    header { height: 50vh; }
+    header { 
+        height: 60vh;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), url('./head.png') no-repeat center center/cover;
+        justify-content: center;
+        padding: 0 20px;
+    }
+    .header-content { text-align: center; }
+    .hero-title { font-size: 3rem; }
+    .hero-title span { font-size: 1.8rem; }
+    .hero-line { margin: 0 auto 20px; }
+    .hero-date { justify-content: center; }
 }
 /* 增加一個裝飾用的小 icon */
 .hero-date::before, .hero-date::after {
@@ -251,10 +263,18 @@ header {
 <body>
 
 <header>
-    <div class="hero-subtitle">Summer Journey in Chiang Mai</div>
-    <h1 class="hero-title">清邁．親子慢活</h1>
-    <div class="hero-divider"></div>
-    <div class="hero-date">2026.08.02 — 08.08</div>
+    <div class="header-content">
+        <div class="hero-tag">Summer 2026 Journey</div>
+        <h1 class="hero-title">
+            清邁慢活
+            <span>親子探索之旅</span>
+        </h1>
+        <div class="hero-line"></div>
+        <div class="hero-date">
+            <i class="fas fa-calendar-alt"></i>
+            2026.08.02 — 08.08
+        </div>
+    </div>
 </header>
 
     <div class="container">

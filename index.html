@@ -24,18 +24,75 @@
             line-height: 1.8;
         }
 
+/* --- Header 基礎設定 --- */
 header {
-    height: 75vh; /* 更有氣勢的高度 */
+    height: 75vh;
     background: 
-        /* 核心關鍵：左側深色漸層遮罩，讓文字絕對清晰 */
-        linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0) 60%),
+        /* 加深遮罩，確保文字在陽光下的螢幕也清晰 */
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
         url('./head.png') no-repeat center center/cover;
     display: flex;
-    align-items: center; /* 垂直居中 */
-    justify-content: flex-start; /* 水平靠左 */
-    padding: 0 8%;
-    position: relative;
-    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* 主標題：增加字體重量與陰影 */
+.hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 3.5rem; /* 電腦版 */
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 15px rgba(0,0,0,0.5);
+}
+
+/* 日期區塊：重新設計，使其「跳」出來 */
+.hero-date-box {
+    margin-top: 20px;
+    padding: 12px 30px;
+    /* 改用金色細邊框與微妙的暗色底，不影響圖面但極其明顯 */
+    border: 1px solid #D4A373;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(4px); /* 輕微毛玻璃 */
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+}
+
+.hero-date-box i {
+    color: #D4A373;
+    font-size: 1.2rem;
+}
+
+/* --- 重點：手機版 RWD 修正區 --- */
+@media (max-width: 768px) {
+    header {
+        height: 65vh; /* 縮減手機版高度 */
+        /* 手機版遮罩再加深一點點，避免戶外看不清 */
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('./head.png') no-repeat center center/cover;
+    }
+
+    /* 手機版主標題：這裡改大！ */
+    .hero-title {
+        font-size: 2.5rem; /* 原本可能只有 1.8rem，現在直接拉大 */
+        padding: 0 10px;
+    }
+
+    /* 手機版日期區塊：確保字體夠粗、夠大 */
+    .hero-date-box {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: 90%; /* 手機版撐滿一點比較好讀 */
+        justify-content: center;
+    }
 }
 
 /* 內容容器 */
@@ -263,17 +320,13 @@ header {
 <body>
 
 <header>
-    <div class="header-content">
-        <div class="hero-tag">Summer 2026 Journey</div>
-        <h1 class="hero-title">
-            清邁慢活
-            <span>親子探索之旅</span>
-        </h1>
-        <div class="hero-line"></div>
-        <div class="hero-date">
-            <i class="fas fa-calendar-alt"></i>
-            2026.08.02 — 08.08
-        </div>
+    <div class="hero-tag">Summer 2026 Journey</div>
+    <h1 class="hero-title">清邁慢活<br>親子探索之旅</h1>
+    
+    <!-- 改用 Box 包起來，視覺上會明顯很多 -->
+    <div class="hero-date-box">
+        <i class="fas fa-calendar-check"></i>
+        <span>2026.08.02 — 08.08</span>
     </div>
 </header>
 
